@@ -1,0 +1,7 @@
+RUNDIR=~/src/seeknovel/src
+git clone https://github.com/nextdevz/nextdev-github-src.git $RUNDIR
+cd $RUNDIR
+git checkout gcloud
+dev_appserver.py --php_executable_path=/usr/bin/php-cgi $PWD
+gcloud app deploy app.yaml --project seeknovel
+
