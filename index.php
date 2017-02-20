@@ -9,9 +9,14 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="Author" content="Thawatchai Kaosol">
         <meta name="License" content="License: Copyright 2014, NextDEV, All Rights Reserved.">
+
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://apis.google.com/js/api:client.js"></script>
+        <!--<script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com">-->
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css"/>
-    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <style><?php include('css/jqueryPlugins.css');?></style>
       	<style><?php include('css/main.css');?></style>
     </head>
@@ -55,6 +60,8 @@
             </div>
         </div>
         <div class="body container">
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
             <div id="status"></div>
             <?php
                 for($i=0; $i < 200; $i++) {
@@ -80,4 +87,7 @@
     }
     //152054098638718
     //14487da1ccf3dad9c61809deabfed74f
+
+    //6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com
+    //Be16h3-gaRpzpcowWChaosWk
 ?>
