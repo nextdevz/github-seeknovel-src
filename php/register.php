@@ -1,11 +1,11 @@
-<div class="register box-comment">
+<div class="register box-comment is-hidden">
     <div class="up arrow-box">
         <div class="up arrow-show"></div>
     </div>
     <div class="detail">
         <p class="control center head">สมัครสมาชิก <?php echo $title;?></p>
         <p class="control has-icon has-icon-left">
-            <input id="username" name="username" class="input" type="text" placeholder="ชื่อผู้ใช้งาน" maxlength="20" minlength="4">
+            <input id="username" name="username" class="input" type="text" placeholder="ชื่อผู้ใช้งาน" maxlength="80" minlength="4">
             <span class="icon">
                 <i class="fa fa-user"></i>
             </span>
@@ -17,7 +17,7 @@
             </span>
         </p>
         <p class="control has-icon has-icon-left">
-            <input id="realname" name="realname" class="input" type="text" placeholder="ชื่อจริง" maxlength="250" minlength="8">
+            <input id="realname" name="realname" class="input" type="text" placeholder="ชื่อจริง" maxlength="255" minlength="8">
             <span class="icon">
                 <i class="fa fa-user-circle"></i>
             </span>
@@ -29,7 +29,7 @@
             </span>
         </p>
         <p id="birthday-i" class="control has-icon has-icon-left">
-            <input id="birthday" name="birthday" class="input" type="text" placeholder="วันเกิด">
+            <input id="birthday" name="birthday" class="input" type="text" placeholder="วันเกิด" readonly="true">
             <span class="icon">
                 <i class="fa fa-calendar"></i>
             </span>
@@ -61,7 +61,7 @@
                 <option value='0'>ปี</option>
                 <?php
                     $st = date('Y') - 13;
-                    $ed = $st - 87;
+                    $ed = $st - 100;
                     for($i=$st; $i>$ed; $i--) {
                         echo "<option value='{$i}'>".($i+543)."</option>";
                     }
