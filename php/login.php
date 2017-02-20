@@ -1,4 +1,4 @@
-<div class="login box-comment is-hidden">
+<div class="login box-comment">
     <div class="up arrow-box">
         <div class="up arrow-show"></div>
     </div>
@@ -31,7 +31,7 @@
             </span>
             <span>เข้าสู่ระบบด้วย Facebook</span>
         </a>
-        <a class="button is-danger">
+        <a id="btn-google" class="button is-danger">
             <span class="icon">
                 <i class="fa fa-google-plus"></i>
             </span>
