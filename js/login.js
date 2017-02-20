@@ -23,7 +23,7 @@ $('.show-pass').click(function(){
         i.removeClass('fa-eye-slash').addClass('fa-eye');
     }
 });
-$('#birthday').focusin(function(){
+$('#birthday-i').click(function(){
     $('#birthday-i').addClass('is-hidden');
     $('#birthday-s').removeClass('is-hidden');
 });
@@ -31,7 +31,7 @@ $('.register input[id!="birthday"], button').focusin(function(){
     if($('#birthday-s').hasClass('is-hidden') === false) {
         var y = $('#year').val(), m = $('#month').val(), d = $('#day').val();
         if($.checkDate(y, m, d) === true) {
-            $('#birthday').val($.date('d/m/Y', 'th', {y:y, m:m, d:d}));
+            $('#birthday').val($.date('d/m/Y', 'th', {y:y, m:m, d:d})).removeClass('is-danger');
         }
         else {
             $('#birthday').val('').addClass('is-danger');
