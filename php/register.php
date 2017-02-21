@@ -71,15 +71,15 @@
         </p>
         <p class="control">
             <label class="radio">
-                <input type="radio" value="0" name="sex">
+                <input type="radio" value="0" name="gender">
                 ชาย
             </label>
             <label class="radio">
-                <input type="radio" value="1" name="sex">
+                <input type="radio" value="1" name="gender">
                 หญิง
             </label>
             <label class="radio">
-                <input type="radio" value="2" name="sex">
+                <input type="radio" value="2" name="gender">
                 อื่นๆ
             </label>
         </p>

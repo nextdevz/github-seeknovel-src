@@ -1,7 +1,10 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="js/jqueryPlugins.js"></script>
   <script src="https://apis.google.com/js/api:client.js"></script>
+  <link href="css/jqueryPlugins.css" rel="stylesheet" type="text/css">
   <script>
   var googleUser = {};
   var startApp = function() {
@@ -18,10 +21,22 @@
     });
   };
 
+  var request = gapi.client.plus.people.get({
+    'userId' : '116458417000078178398'
+  });
+
+  request.execute(function(resp) {
+    console.log('ID: ' + resp.id);
+    console.log('Display Name: ' + resp.displayName);
+    console.log('Image URL: ' + resp.image.url);
+    console.log('Profile URL: ' + resp.url);
+  });
+
   function attachSignin(element) {
     console.log(element.id);
     auth2.attachClickHandler(element, {},
         function(googleUser) {
+          $.print(googleUser);
           document.getElementById('name').innerText = "Signed in: " +
               googleUser.getBasicProfile().getName();
         }, function(error) {

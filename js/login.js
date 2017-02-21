@@ -49,7 +49,7 @@ $('#btn-regis').click(function() {
         }
     });
     alert(123);
-    //alert($('input[name="sex"]:checked').val());
+    //alert($('input[name="gender"]:checked').val());
     //var send = {member_name:$('#username').val(), real_name:('#realname').val(), passwd:$('#password').val(); email:$('#email').val();
 });
 function chkFocus(cond, obj, obj2) {

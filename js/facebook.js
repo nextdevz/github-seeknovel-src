@@ -19,8 +19,17 @@ function checkLoginState() {
 function facebookLogin() {
     FB.login(function(response) {
         if (response.authResponse) {
-            getPhoto();
-            getUserInfo();
+          $("#btn-register").click();
+          FB.api('/me?fields=name,email,gender,birthday', function(response) {
+            $.print(response);
+            var regis = ".register ";
+            $(regis+'#realname').val(response.name).attr('readonly', 'true');
+            $(regis+'#email').val(response.email).attr('readonly', 'true');
+            $(regis+'#birthday').val(response.birthday).attr('readonly', 'true');
+            $(regis+'input[name=gender]').val(response.gender).attr('readonly', 'true');
+          });
+            //getPhoto();
+          //  getUserInfo();
         } else {
             console.log('User cancelled login or did not fully authorize.');
         }
@@ -46,6 +55,7 @@ function getUserInfo() {
         str +="id: "+response.id+"<br>";
         str +="Email: "+response.email+"<br>";
         str +="Birthday: "+response.birthday+"<br>";
+        str +="Gender: "+response.gender+"<br>";
         str +="Link: "+response.link+"<br><br>";
         str +="<input type='button' value='Logout' onclick='Logout();'/><br><br";
         document.getElementById("status").innerHTML+=str;
