@@ -31,18 +31,18 @@
         private $show_error=true;
 
 		public function c_query($real_string=true) {
-            $this->main = new c_function($real_string);
+            //$this->main = new c_function($real_string);
             if(defined('DB_HOST') === true && defined('DB_USER') === true && defined('DB_PWD') === true && defined('DB_NAME') === true) {
 			    $this->setConfig(DB_HOST, DB_USER, DB_PWD, DB_NAME);
             }
-			if(isset($_POST["real_string_check"]) === false && $real_string === true) {
+			/*if(isset($_POST["real_string_check"]) === false && $real_string === true) {
 				foreach ($_POST as $key => $value) {
 					if($key != "query_sql" && $key != "check_sql") {
 						$_POST[$key] = $this->main->array_real_string($value);
 					}
 				}
 				$_POST["real_string_check"] = true;
-			}
+			}*/
 		}
 
 //-------------------------------------------------------------------------------------------------------
@@ -183,8 +183,9 @@
 //-------------------------------------------------------------------------------------------------------
 
 		private function skip_data($skip) {
-			$skip = str_replace(" ", "", $skip.($skip != '' ? ', ' : '').'real_string_check, process, percentProcess, pathProcess');
-			return $this->main->array_trim(array_flip(explode(',', $skip)));
+			//$skip = str_replace(" ", "", $skip.($skip != '' ? ', ' : '').'real_string_check, process, percentProcess, pathProcess');
+			//return $this->main->array_trim(array_flip(explode(',', $skip)));
+			return array_flip(explode(',', $skip));
 		}
 
 //-------------------------------------------------------------------------------------------------------

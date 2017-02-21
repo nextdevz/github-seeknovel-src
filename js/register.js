@@ -1,9 +1,3 @@
-$('#username, #realname, #password').focusout(function(){
-    chkFocus(($(this).val().length < $(this).attr('minlength')),
-        $(this)
-    );
-});
-
 $('.show-pass').click(function(){
     var p = $('#password');
     var i = $('.show-pass .fa');
@@ -14,13 +8,6 @@ $('.show-pass').click(function(){
         p.attr('type', 'text');
         i.removeClass('fa-eye-slash').addClass('fa-eye');
     }
-});
-
-$('#email').focusout(function(){
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    chkFocus(($(this).val().trim() == '' || re.test($(this).val()) === false),
-        $(this)
-    );
 });
 
 $('#birthday').click(function(){
@@ -34,25 +21,32 @@ $('.register input[id!="birthday"], button').focusin(function(){
         if($.checkDate(y, m, d) === true) {
             $('#birthday').val($.date('d/m/Y', 'en', {y:y, m:m, d:d})).removeClass('is-danger');
         }
-        else {
-            $('#birthday').val('').addClass('is-danger');
-        }
     }
     $('#birthday-s').addClass('is-hidden');
     $('#birthday-i').removeClass('is-hidden');
 });
 
 $('#btn-regis').click(function() {
-    var sand = new Array();
-    var error = new Array()
-    $('.register input[type!="radio"]').each(function() {
-        if($(this).hasClass('is-danger') === true) {
-            error.push($(this));
+    var error = false;
+    var slt = '.register ';
+    slt += ($(slt+'.self').hasClass('is-hidden') === false ? '.self' : '.other');
+    $(slt+' input, .register .share input').each(function(i, v){
+        var min = $(this).attr('minlength');
+        var rx = $(this).attr('regexp');
+        var val = $(this).val().trim();
+        if(rx != undefined) rx = new RegExp(rx);
+        if(val == '' || (min != undefined && val.length < min) || (rx != undefined && rx.test(val) === false)) {
+            $(this).addClass('is-danger');
+            error = true;
+        } else {
+            $(this).removeClass('is-danger');
         }
     });
-    alert(123);
-    //alert($('input[name="gender"]:checked').val());
-    //var send = {member_name:$('#username').val(), real_name:('#realname').val(), passwd:$('#password').val(); email:$('#email').val();
+    if(error === false) {
+        $.send(url+'?php=member' , $('.register').serializePHP('register'), function(data){
+            //$.print(data);
+        });
+    }
 });
 
 function chkFocus(cond, obj, obj2) {
@@ -93,14 +87,10 @@ function resetShare() {
 }
 
 function dataRegis(data){
-    resetOther();
-    resetShare();
-    var regis = ".register ";
-    $(regis+'#idCode').val(data.id);
-    $(regis+'#link').val(data.link);
-    $(regis+'#realname').val(data.name);
-    $(regis+'#email').val(data.email);
-    $(regis+'#birthday').val(data.birthday);
-    var gender = (data.gender == 'male' ? 0 : 1);
-    $(regis+'.radio [value='+gender+']').prop('checked', true);
+  resetOther();
+  resetShare();
+  if(data != undefined) {
+    $('.register').dataToObject(data);
+    $('#retype').val('facebook');
+  }
 }

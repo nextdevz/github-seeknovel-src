@@ -105,17 +105,17 @@ $(function(){
 					if(this.tagName == 'SELECT') {
 						this.selectedIndex = 0;
 					}
-					//else if(this.type == 'radio' && this.type == 'checkbox'){
 					else {
 						$(this).val(null);
 					}
 				}
 				else {
-					if(this.tagName == 'INPUT' && this.type == 'radio') {
-						$(this).val([d[n]]);
-					}
-					else if(this.tagName == 'INPUT' && this.type == 'checkbox') {
-						$(this).prop('checked', ($(this).val() == d[n] ? true : false));
+					if(this.tagName == 'INPUT') {
+						if(this.type == 'checkbox' || this.type == 'radio') {
+							$(this).prop('checked', ($(this).val() == d[n] ? true : false));
+						} else {
+							$(this).val([d[n]]);
+						}
 					}
 					else {
 						$(this).val(d[n]);
@@ -601,7 +601,7 @@ $(function(){
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 
-	$.send = function(u, d, s, op) {
+	/*$.send = function(u, d, s, op) {
 		op = $.extend({
 			dataType:undefined,
 			progressBar: 'normal',
@@ -677,6 +677,22 @@ $(function(){
 			}
 			s.call($(this), d, l);
 		}, op.dataType);
+	}*/
+
+	//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+	$.send = function(u, d, s, op) {
+		$.post(u, d, function(d){
+			if(d.substr(0, 4) == 'DRL='){
+				var l = parseInt(d.substr(4, 6), 16);
+				d = d.substr(10);
+			}
+			d = $.dataJSON(d);
+			if(d === false) {
+				return false;
+			}
+			s.call($(this), d, l);
+		});
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -701,7 +717,7 @@ $(function(){
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 	$.fn.serializePHP = function(v, o){
-		if(this.context == undefined) {
+		if(this[0] instanceof HTMLElement === false) {
 			return 'process=' + v + '&'+ $.param(this[0]);
 		}
 		else if(o === true) {

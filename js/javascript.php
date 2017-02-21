@@ -1,9 +1,10 @@
+var url='<?php echo $rootUrl;?>process.php';
 <?php
-    include_once('publicVar.js');
-    include_once('jqueryPlugins.js');
-    include_once('facebook.js');
-    include_once('google.js');
-    include_once('menu.js');
-    include_once('login.js');
-    include_once('register.js');
+    include_once($jsLayout.'publicVar.js');
+    include_once($jsLayout.'jqueryPlugins.js');
+    include_once($jsLayout.'facebook.js');
+    include_once($jsLayout.'google.js');
+    include_once($jsLayout.'menu.js');
+    include_once($jsLayout.'login.js');
+    include_once($jsLayout.'register.js');
 ?>

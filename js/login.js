@@ -1,6 +1,7 @@
 $("#btn-register").click(function(){
   resetSelf();
   resetShare();
+  $('#retype').val('self');
 });
 
 $("#btn-facebook").click(function(){

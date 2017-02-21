@@ -21,7 +21,10 @@
   $cssDir = $rootUrl.'css/';
   $imgDir = $rootUrl.'images/';
   $rootDir = __DIR__.'/';
+  $jsDir = $rootDir.'js/';
+  $jsLayout = $rootDir.'js/';
   $phpDir = $rootDir.'php/';
-  $classDir = $phpDir.'class/';
-  $layoutDir = $phpDir.'layout/';
+  $phpClass = $phpDir.'class/';
+  $phpLayout = $phpDir.'layout/';
+  $phpProcess = $phpDir.'process/';
 ?>

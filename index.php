@@ -52,9 +52,9 @@
                         <span></span>
                     </span>
                     <div id="box-comment">
-                        <?php include_once($layoutDir.'notification.php');?>
-                        <?php include_once($layoutDir.'login.php');?>
-                        <?php include_once($layoutDir.'register.php');?>
+                        <?php include_once($phpLayout.'notification.php');?>
+                        <?php include_once($phpLayout.'login.php');?>
+                        <?php include_once($phpLayout.'register.php');?>
                     </div>
                 </nav>
             </div>
@@ -69,7 +69,7 @@
                 }
             ?>
         </div>
-        <script><?php include_once('js/javascript.php');?></script>
+        <script><?php include_once($jsDir.'javascript.php');?></script>
     </body>
 </html>
 <?php
