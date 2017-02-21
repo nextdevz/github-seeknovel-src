@@ -16,24 +16,16 @@ function checkLoginState() {
     });
 }
 
-function facebookLogin() {
-    FB.login(function(response) {
-        if (response.authResponse) {
-          $("#btn-register").click();
-          FB.api('/me?fields=name,email,gender,birthday', function(response) {
-            $.print(response);
-            var regis = ".register ";
-            $(regis+'#realname').val(response.name).attr('readonly', 'true');
-            $(regis+'#email').val(response.email).attr('readonly', 'true');
-            $(regis+'#birthday').val(response.birthday).attr('readonly', 'true');
-            $(regis+'input[name=gender]').val(response.gender).attr('readonly', 'true');
-          });
-            //getPhoto();
-          //  getUserInfo();
-        } else {
-            console.log('User cancelled login or did not fully authorize.');
-        }
-    },{scope: 'email, public_profile, user_friends, user_birthday'});
+function facebookLogin(callback) {
+  FB.login(function(response) {
+    if(response.authResponse) {
+      FB.api('/me?fields=id,link,name,email,gender,birthday', function(response) {
+        callback.call(this, response);
+      });
+    } else {
+        console.log('User cancelled login or did not fully authorize.');
+    }
+  },{scope: 'email, public_profile, user_friends, user_birthday'});
 }
 
 function Logout() {

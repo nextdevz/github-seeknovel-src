@@ -17,8 +17,8 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css"/>
     	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style><?php include('css/jqueryPlugins.css');?></style>
-      	<style><?php include('css/main.css');?></style>
+        <link rel="stylesheet" href="<?php echo $cssDir;?>jqueryPlugins.css">
+        <link rel="stylesheet" href="<?php echo $cssDir;?>main.css">
     </head>
     <body>
         <div class="menu">
@@ -26,7 +26,7 @@
                 <nav class="nav">
                 	<div class="nav-left">
                 		<a href="<?php echo $root;?>" class="nav-item is-brand">
-                			<img alt="<?php echo $fulltitle;?>" src="<?php echo $image;?>logo.png">
+                			<img alt="<?php echo $fulltitle;?>" src="<?php echo $imgDir;?>logo.png">
                 		</a>
                 		<div class="title-name">
                 			<h2 class="title is-4"><?php echo $title;?></h3>
@@ -52,9 +52,9 @@
                         <span></span>
                     </span>
                     <div id="box-comment">
-                        <?php include_once($php.'notification.php');?>
-                        <?php include_once($php.'login.php');?>
-                        <?php include_once($php.'register.php');?>
+                        <?php include_once($layoutDir.'notification.php');?>
+                        <?php include_once($layoutDir.'login.php');?>
+                        <?php include_once($layoutDir.'register.php');?>
                     </div>
                 </nav>
             </div>

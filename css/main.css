@@ -178,6 +178,9 @@ p.nav-item {
 	z-index: 5;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
 }
+.box-comment .self, .other {
+	margin-bottom: 0.75rem;
+}
 @media screen and (min-width: 769px) {
 	.box-comment .detail{
 		width: 284px;
