@@ -1,6 +1,6 @@
-/*html {
-	background-color: #d0ffe0;
-}*/
+html {
+	background-color: #555555;
+}
 .menu {
 	position: fixed;
 	width: 100%;
@@ -9,8 +9,28 @@
 }
 .menu, .nav {
 	height: 50px;
-	background: #00d1b2 none repeat scroll 0 0;
+	background: #363e3e none repeat scroll 0 0;
 	z-index: 2;
+}
+body.day {
+	background-attachment: fixed;
+	background-image: url("../images/background2.jpg"), url("../images/background2.jpg");
+	background-position: left top, right top;
+	background-repeat: no-repeat;
+	background-size: 50% 100%;
+}
+.body {
+	margin-top: 50px;
+}
+body.day input {
+	background-color: #fafafa;
+}
+.body.container.day {
+	background-color: #f3f3f3;
+	border: 1px solid #868e8e;
+}
+body.day .text-line span {
+	background: #f3f3f3;
 }
 .title-name {
 	text-align: left;
@@ -164,16 +184,18 @@ p.nav-item {
 }
 .login .detail, .register .detail{
 	padding: 20px 20px 10px 20px;
-	background-color: #fff;
 	text-align: center;
 }
 .box-comment {
 	position: absolute;
 	top: 50px;
 	right: 0px;
-	color: #00d1b2;
-	z-index: 5;
+	color: #363e3e;
+	z-index: 90;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
+}
+.box-comment.day {
+	background-color: #f3f3f3;
 }
 .box-comment div.self, .box-comment div.other {
 	margin-bottom: 0.75rem;
@@ -200,6 +222,12 @@ p.nav-item {
 .box-comment .button{
    	width: 100%;
 	margin-bottom: 0.75rem;
+}
+.box-comment a{
+   	color:#363e3e;
+}
+.box-comment a:hover{
+   	color:#707b7b;
 }
 @media screen and (min-width: 769px) {
 	.box-comment .arrow-box{
@@ -242,14 +270,13 @@ p.nav-item {
 .control.text-line {
 	width:100%;
 	text-align:center;
-	border-bottom: 1px solid #00d1b2;
+	border-bottom: 1px solid #363e3e;
 	line-height:0.1em;
 	background:#fff;
 	margin:10px 0px 20px;
 }
 .text-line span {
-	background:#fff;
-	padding:0 10px;
+	padding: 0 10px;
 }
 /*----------------------------------------------------------------------------------------------------------------------------*/
 .box-message {
@@ -273,10 +300,6 @@ p.nav-item {
 }
 .box-message .message-body{
 	text-align: left;
-}
-.body {
-	height: 2500px;
-	margin-top: 50px;
 }
 .delete {
     font-size: 0.7rem;

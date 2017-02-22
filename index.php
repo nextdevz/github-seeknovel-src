@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="<?php echo $cssDir;?>jqueryPlugins.css">
         <link rel="stylesheet" href="<?php echo $cssDir;?>main.css">
     </head>
-    <body>
+    <body class="day">
         <div class="menu">
             <div class="container">
                 <nav class="nav">
@@ -67,7 +67,7 @@
                 </nav>
             </div>
         </div>
-        <div class="body container">
+        <div class="body container day">
           <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
             <div id="status"></div>

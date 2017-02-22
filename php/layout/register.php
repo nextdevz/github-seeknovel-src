@@ -103,7 +103,7 @@
                 </label>
             </p>
             <p class="control">
-                <button id="btn-regis" class="button is-success">สมัครสมาชิก</button>
+                <button id="btn-regis" class="button is-dark">สมัครสมาชิก</button>
             </p>
         <div>
     </div>
