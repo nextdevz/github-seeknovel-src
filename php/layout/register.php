@@ -79,7 +79,7 @@
                 <select id="year" name="year">
                     <option value='0'>ปี</option>
                     <?php
-                        $st = date('Y') - 13;
+                        $st = date('Y') - 6;
                         $ed = $st - 100;
                         for($i=$st; $i>$ed; $i--) {
                             echo "<option value='{$i}'>{$i}</option>";

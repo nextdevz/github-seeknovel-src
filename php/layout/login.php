@@ -20,7 +20,7 @@
             <a>ลืมรหัสผ่าน</a> | <a id="btn-register">สมัครสมาชิก</a>
         </p>
         <p class="control">
-            <button class="button is-primary">เข้าสู่ระบบ</button>
+            <button id="btn-login" class="button is-primary">เข้าสู่ระบบ</button>
         </p>
         <p class="control text-line">
             <span>หรือ</span>

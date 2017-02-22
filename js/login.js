@@ -1,3 +1,7 @@
+$('#btn-login').click(function(){
+    
+});
+
 $("#btn-register").click(function(){
   resetSelf();
   resetShare();

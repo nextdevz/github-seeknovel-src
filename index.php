@@ -44,9 +44,6 @@
                             </span>
                         </p>
                         <?php
-                            //echo showIcon('book', '', 'หมวดนิยาย', 1).showIcon('pencil', '', 'เขียนนิยาย', 1).showIcon('bookmark', '', 'ห้องเก็บนิยาย', 1);
-                        ?>
-                        <?php
                             echo showIcon('book', '', 'หมวดนิยาย', 'is-hidden-mobile')
                             .showIcon('pencil', '', 'เขียนนิยาย', 'is-hidden-mobile')
                             .showIcon('bookmark', '', 'ห้องเก็บนิยาย', 'is-hidden-mobile');
@@ -80,22 +77,22 @@
                 }
             ?>
         </div>
+        <div class="box-message is-hidden">
+            <div class="box-message-v">
+                <article class="message is-info">
+                    <div class="message-header">
+                        <p></p>
+                        <button class="delete"></button>
+                    </div>
+                    <div class="message-body">
+                    </div>
+                </article>
+            </div>
+        </div>
         <script><?php include_once($jsDir.'javascript.php');?></script>
     </body>
 </html>
 <?php
-    /*function showIcon($icon, $btn, $name='', $mobile=false, $class='') {
-        if($mobile !== false) {
-            $hmobile = ' is-hidden-mobile';
-            $tablet = ($name != '' ? "<a class='nav-item is-hidden-tablet {$class}'>{$name}</a>" : '');
-        }
-        else {
-            $hmobile = '';
-            $tablet = $name;
-        }
-        $btn = ($btn != '' ? 'btn-'.$btn : '');
-        echo "<a class='nav-item{$hmobile} {$btn}' id='{$btn}'><span class='icon{$hmobile} {$class}'><i class='fa fa-{$icon}'></i></span>{$tablet}</a>";
-    }*/
     function showIcon($icon, $btn, $data='', $class='') {
         if($class == 'is-hidden-mobile') {
             $data = ($data != '' ? "<a class='nav-item is-hidden-tablet'>{$data}</a>" : '');
