@@ -20,6 +20,7 @@
             </p>
         </div>
         <div class="other is-hidden">
+            <input id="hash" name="hash" type="hidden">
             <p class="control has-icon has-icon-left">
                 <input id="idcode" name="idcode" class="input is-disabled" type="text" maxlength="20">
                 <span class="icon">

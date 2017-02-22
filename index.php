@@ -11,12 +11,15 @@
         <meta name="License" content="License: Copyright 2014, NextDEV, All Rights Reserved.">
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.min.js"></script>
         <script src="https://apis.google.com/js/api:client.js"></script>
         <!--<script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com">-->
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css"/>
-    	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo $cssDir;?>jqueryPlugins.css">
         <link rel="stylesheet" href="<?php echo $cssDir;?>main.css">
     </head>
@@ -40,12 +43,20 @@
                                 <i class="fa fa-search"></i>
                             </span>
                         </p>
-                        <?php echo showIcon('book', '', 'หมวดนิยาย', 1);?>
-                        <?php echo showIcon('pencil', '', 'เขียนนิยาย', 1);?>
-                        <?php echo showIcon('bookmark', '', 'ห้องเก็บนิยาย', 1);?>
+                        <?php
+                            //echo showIcon('book', '', 'หมวดนิยาย', 1).showIcon('pencil', '', 'เขียนนิยาย', 1).showIcon('bookmark', '', 'ห้องเก็บนิยาย', 1);
+                        ?>
+                        <?php
+                            echo showIcon('book', '', 'หมวดนิยาย', 'is-hidden-mobile')
+                            .showIcon('pencil', '', 'เขียนนิยาย', 'is-hidden-mobile')
+                            .showIcon('bookmark', '', 'ห้องเก็บนิยาย', 'is-hidden-mobile');
+                        ?>
                     </div>
-                    <?php echo showIcon('comment', 'notifi', '<span class="num-notification">2</span>');?>
-                    <?php echo showIcon('user-plus', 'login');?>
+                    <?php
+                        echo showIcon('comment', 'notifi', '<span class="num-notification">2</span>')
+                        .showIcon('user', 'user', '', 'is-hidden')
+                        .showIcon('user-plus', 'login');
+                    ?>
                     <span class="nav-toggle" id="nav-toggle">
                         <span></span>
                         <span></span>
@@ -73,17 +84,24 @@
     </body>
 </html>
 <?php
-    function showIcon($icon, $btn, $name='', $mobile=false, $data='') {
+    /*function showIcon($icon, $btn, $name='', $mobile=false, $class='') {
         if($mobile !== false) {
             $hmobile = ' is-hidden-mobile';
-            $tablet = ($name != '' ? "<a class='nav-item is-hidden-tablet'>{$name}</a>" : '');
+            $tablet = ($name != '' ? "<a class='nav-item is-hidden-tablet {$class}'>{$name}</a>" : '');
         }
         else {
             $hmobile = '';
             $tablet = $name;
         }
         $btn = ($btn != '' ? 'btn-'.$btn : '');
-        echo "<a class='nav-item{$hmobile} {$btn}' id='{$btn}'><span class='icon{$hmobile}'><i class='fa fa-{$icon}'></i></span>{$tablet}{$data}</a>";
+        echo "<a class='nav-item{$hmobile} {$btn}' id='{$btn}'><span class='icon{$hmobile} {$class}'><i class='fa fa-{$icon}'></i></span>{$tablet}</a>";
+    }*/
+    function showIcon($icon, $btn, $data='', $class='') {
+        if($class == 'is-hidden-mobile') {
+            $data = ($data != '' ? "<a class='nav-item is-hidden-tablet'>{$data}</a>" : '');
+        }
+        $btn = ($btn != '' ? 'btn-'.$btn : '');
+        echo "<a class='nav-item {$class} {$btn}' id='{$btn}'><span class='icon'><i class='fa fa-{$icon}'></i></span>{$data}</a>";
     }
     //152054098638718
     //14487da1ccf3dad9c61809deabfed74f

@@ -44,7 +44,16 @@ $('#btn-regis').click(function() {
     });
     if(error === false) {
         $.send(url+'?php=member' , $('.register').serializePHP('register'), function(data){
-            //$.print(data);
+            if(data == '0') {
+                $('#btn-login, .register').addClass('is-hidden');
+                $('#btn-user').removeClass('is-hidden');
+            }
+            else if(data == 1) {
+                alert('พบข้อผิดพลาดในข้อมูลที่ลงทะเบียน');
+            }
+            else if(data == 2) {
+                alert('ข้อมูลนี้มีการลงทะเบียนเรียบร้อยแล้ว');
+            }
         });
     }
 });

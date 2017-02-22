@@ -23,7 +23,10 @@ function facebookLogin(callback) {
         var data = response;
         data.idcode = data.id;
         data.realname = data.name;
+        var date = data.birthday.split('/');
+        data.birthday = date['1']+'/'+date['0']+'/'+date['2'];
         data.gender = (data.gender == 'male' ? 0 : 1);
+        data.hash = CryptoJS.HmacSHA256(data.id, data.link);
         callback.call(this, data);
       });
     } else {
@@ -82,7 +85,8 @@ window.fbAsyncInit = function() {
 function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+        status.login = true;
+        $('#btn-login').addClass('is-hidden');
+        $('#btn-user').removeClass('is-hidden');
     });
 }

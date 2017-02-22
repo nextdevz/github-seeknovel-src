@@ -40,6 +40,8 @@ CREATE TABLE `nv_members` (
   `link_google` varchar(255) NOT NULL DEFAULT '',
   `date_regis` int(10) unsigned NOT NULL DEFAULT '0',
   `last_login` int(10) unsigned NOT NULL DEFAULT '0',
+  `silver_coin` int(10) unsigned NOT NULL DEFAULT '0',
+  `gold_coin` int(10) unsigned NOT NULL DEFAULT '0',
   `avatar` varchar(255) NOT NULL DEFAULT '',
   `notify_news` tinyint(4) NOT NULL DEFAULT '1',
   `member_ip` varchar(255) NOT NULL DEFAULT '',
@@ -54,7 +56,9 @@ CREATE TABLE `nv_members` (
   KEY `id_google` (`id_google`),
   KEY `link_google` (`link_google`),
   KEY `date_regis` (`date_regis`),
-  KEY `last_login` (`last_login`)
+  KEY `last_login` (`last_login`),
+  KEY `silver_coin` (`silver_coin`),
+  KEY `gold_coin` (`gold_coin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

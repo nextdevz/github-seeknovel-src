@@ -372,6 +372,11 @@
 
 		public function pre_sel($field,$table,$where='',$value=null,$sub='') {
 			if($this->data_exec($value)) {
+				foreach($value['data'] as $i => $v) {
+					if(strpos($where, $i) === false) {
+						unset($value['data'][$i]);
+					}
+				}
 				$this->qid = @$this->pdo->prepare($this->sql_select($field,$table,$where,$sub));
 				$result = $this->process($this->qid->execute($value['data']));
 			}
@@ -575,15 +580,15 @@
 //-------------------------------------------------------------------------------------------------------
 
 		public function json($json = null, $length=true) {
-            if($json == null && $this->num_rows() > 0) {
+            if($json === null && $this->num_rows() > 0) {
 				$json = $this->data['q'];
                 if($length == true) {
                     $len = dechex($this->num_rows());
 				    echo 'DRL='.str_repeat('0', 6-strlen($len)).$len;
                 }
             }
-            if($json != null) {
-				if(gettype($json) == 'string') {
+            if($json !== null) {
+				if(gettype($json) != "array" && gettype($json) != "object" ) {
 					echo json_encode(array('0'=>$json));
 				}
                 else if(is_array($json) === true && count($json) > 50 && isset($_POST['percentProcess']) === true) {

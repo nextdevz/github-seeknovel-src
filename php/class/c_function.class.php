@@ -72,17 +72,25 @@
 
 //-------------------------------------------------------------------------------------------------------
 
-		public function get_real_ip() {
-			if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-				$ip=$_SERVER['HTTP_CLIENT_IP'];
-			}
-			else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-				$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-			}
-			else {
-				$ip=$_SERVER['REMOTE_ADDR'];
-			}
-			return $ip;
+		public function get_real_ip($multi = false) {
+            $result = array();
+            $inx = array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR');
+            $l = count($inx);
+            for($i=0; $i<$l; $i++) {
+                if(isset($_SERVER[$inx[$i]]) === true) {
+                    $ip = $_SERVER[$inx[$i]];
+                    if(filter_var($ip, FILTER_VALIDATE_IP) && !in_array($ip, $result)) {
+                        array_push($result, $ip);
+                    }
+                }
+            }
+            if($multi === false) {
+                return (count($result) > 0 ? $result[0] : '');
+            }
+            else {
+                if(isset($result[1]) === false) $result[1] = '';
+                return $result;
+            }
 		}
 
 //-------------------------------------------------------------------------------------------------------
