@@ -19,18 +19,28 @@ body.day {
 	background-repeat: no-repeat;
 	background-size: 50% 100%;
 }
-.body {
-	margin-top: 50px;
-}
 body.day input {
 	background-color: #fafafa;
 }
-.body.container.day {
+body.day .body.container {
 	background-color: #f3f3f3;
-	border: 1px solid #868e8e;
 }
 body.day .text-line span {
 	background: #f3f3f3;
+}
+body.day .box-comment {
+	background-color: #f3f3f3;
+}
+@media screen and (max-width: 768px) {
+	body.day .nav-menu.is-active {
+		background-color: #f3f3f3;
+	}
+}
+.body {
+	margin-top: 50px;
+}
+.body.container {
+	border: 1px solid #868e8e;
 }
 .title-name {
 	text-align: left;
@@ -84,20 +94,20 @@ body.day .text-line span {
    top: 1.7rem;
    right: 1.9rem;
 }
-nav .icon {
-   color: #f2f5f4;
+.nav .icon {
+   color: #fff;
 }
-nav .icon:hover {
-   color: #ffffff;
+.nav-item:hover .icon {
+   color: #ddd;
 }
 .nav-toggle:hover{
-	background-color: #70d9ba;
+	background-color: #565e5e;
 }
 .nav-toggle span {
     height: 3px;
 	width:20px;
 	margin-left: -10px;
-	background-color: #007152;
+	background-color: #fff;
 	border-radius: 3px;
 }
 .nav-toggle span:nth-child(1) {
@@ -107,7 +117,7 @@ nav .icon:hover {
     margin-top: 5px;
 }
 .nav-toggle.is-active span {
-    background-color: #209172;
+    background-color: #fff;
 }
 .nav-toggle.is-active span:nth-child(1) {
 	margin-top: -8px;
@@ -145,6 +155,9 @@ nav .icon:hover {
 	background-color: #ff3860;
 	border: 2px solid white;
 	border-radius: 6px;
+}
+#btn-notifi:hover .num-notification {
+   border-color: #ddd;
 }
 p.nav-item {
 	padding: 0rem;
@@ -194,9 +207,6 @@ p.nav-item {
 	z-index: 90;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
 }
-.box-comment.day {
-	background-color: #f3f3f3;
-}
 .box-comment div.self, .box-comment div.other {
 	margin-bottom: 0.75rem;
 }
@@ -244,7 +254,6 @@ p.nav-item {
 		top: -10px;
 	}
 	.box-comment .arrow-show{
-		background-color: #fff;
 		content: "";
 		position: relative;
 		width: 18px;
@@ -256,6 +265,9 @@ p.nav-item {
 		-o-transform: rotate(45deg);
 		transform: rotate(45deg);
 		border: 2px solid #999;
+	}
+	.box-comment .arrow-show{
+		background-color: #f3f3f3;
 	}
 	.div-show-tooltip .arrow-show.up{
 		top:-7px;
