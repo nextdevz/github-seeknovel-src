@@ -28,7 +28,7 @@ body.day .body.container {
 body.day .text-line span {
 	background: #f3f3f3;
 }
-body.day .box-comment {
+body.day .box-comment .detail{
 	background-color: #f3f3f3;
 }
 @media screen and (max-width: 768px) {
@@ -94,11 +94,20 @@ body.day .box-comment {
    top: 1.7rem;
    right: 1.9rem;
 }
-.nav .icon {
+body.day .nav a.nav-item{
    color: #fff;
 }
-.nav-item:hover .icon {
+body.day .nav a.nav-item:hover {
    color: #ddd;
+}
+@media screen and (max-width: 768px) {
+	body.day .nav-item .is-hidden-tablet-only{
+		text-indent: 27px;
+	   	color: #363e3e;
+	}
+	body.day .nav-item .is-hidden-tablet-only:hover {
+	   color: #565e5e;
+	}
 }
 .nav-toggle:hover{
 	background-color: #565e5e;
@@ -132,9 +141,6 @@ body.day .box-comment {
 }
 .nav-item, .nav-item input {
 	font-size: 1.1rem;
-}
-.nav-item.is-hidden-tablet {
-	text-indent: 26px;
 }
 .nav-item img {
 	max-height: 2.5rem;
@@ -302,6 +308,10 @@ p.nav-item {
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.6);
 }
+.box-message-v span.is-danger{
+	font-weight: bold;
+	color: #ff3860;
+}
 .box-message-v {
 	display: table-cell;
     vertical-align: middle;
@@ -309,6 +319,9 @@ p.nav-item {
 .box-message .message{
 	display: inline-block;
 	width: 230px;
+}
+.box-message .message-header {
+	font-weight: bold;
 }
 .box-message .message-body{
 	text-align: left;

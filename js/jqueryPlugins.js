@@ -244,7 +244,7 @@ $(function(){
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 
-	$.fn.checkIdCard = function(blank) {
+	$.fn.checkIdCard = function(blank=false) {
 		var c = r = chk = 0;
 		$(this).each(function(){
 			var str = $(this).val();
@@ -735,11 +735,12 @@ $(function(){
 	$.fn.serializeObject = function(o){
 		var r = {};
 		var i = 0;
-		val($(this));
 		$(this).find('button[name], input[name], select[name], textarea[name]').each(function() {
 			if($(this).attr('name') !== undefined) {
-				if(this.type == 'checkbox') {
-					r[$(this).attr('name')] = $(this).checked();
+				if(this.type == 'radio' || this.type == 'checkbox') {
+					if($(this).prop('checked') == true) {
+						val($(this));
+					}
 				}
 				else {
 					val($(this));
@@ -2607,7 +2608,7 @@ $(function(){
 	//---------------------------------------------------------------------------------------------------------------------------------------------------
 
 	$.fn.checked = function(v) {
-		return ($(this).is(":checked") ? $(this).val() : 0);
+		return ($(this).prop('checked') ? $(this).val() : 0);
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------

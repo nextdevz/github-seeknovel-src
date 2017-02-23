@@ -38,7 +38,7 @@ CREATE TABLE `nv_members` (
   `link_facebook` varchar(255) NOT NULL DEFAULT '',
   `id_google` bigint(20) unsigned NOT NULL DEFAULT '0',
   `link_google` varchar(255) NOT NULL DEFAULT '',
-  `date_regis` int(10) unsigned NOT NULL DEFAULT '0',
+  `date_register` int(10) unsigned NOT NULL DEFAULT '0',
   `last_login` int(10) unsigned NOT NULL DEFAULT '0',
   `silver_coin` int(10) unsigned NOT NULL DEFAULT '0',
   `gold_coin` int(10) unsigned NOT NULL DEFAULT '0',
@@ -55,7 +55,7 @@ CREATE TABLE `nv_members` (
   KEY `link_facebook` (`link_facebook`),
   KEY `id_google` (`id_google`),
   KEY `link_google` (`link_google`),
-  KEY `date_regis` (`date_regis`),
+  KEY `date_register` (`date_register`),
   KEY `last_login` (`last_login`),
   KEY `silver_coin` (`silver_coin`),
   KEY `gold_coin` (`gold_coin`)

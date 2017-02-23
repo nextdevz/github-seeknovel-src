@@ -27,7 +27,8 @@ $('.register input[id!="birthday"], button').focusin(function(){
 });
 
 $('#btn-regis').click(function() {
-    var error = false;
+    var error = '';
+    var cng = 0;
     var slt = '.register ';
     slt += ($(slt+'.self').hasClass('is-hidden') === false ? '.self' : '.other');
     $(slt+' input, .register .share input').each(function(i, v){
@@ -37,16 +38,31 @@ $('#btn-regis').click(function() {
         if(rx != undefined) rx = new RegExp(rx);
         if(val == '' || (min != undefined && val.length < min) || (rx != undefined && rx.test(val) === false)) {
             $(this).addClass('is-danger');
-            error = true;
-        } else {
+            if(min != undefined) {
+                error += '<span class="is-danger">'+$(this).attr('placeholder')+'</span> กรอกอักขระอย่างน้อย <span class="is-danger">' + min + '</span> ตัวอักษร<br/>' ;
+            }
+            else if(rx != undefined) {
+                error += '<span class="is-danger">'+$(this).attr('placeholder')+'</span> กรอกรูปแบบข้อมูลไม่ถูกต้อง<br/>' ;
+            }
+            else {
+                error += '<span class="is-danger">'+$(this).attr('placeholder')+'</span> กรอกข้อมูลวันเดือนปีไม่ครบ<br/>' ;
+            }
+        }
+        else if($(this).attr('type') == 'radio' && $(this).prop('checked') == false) {
+            cng++;
+        }
+        else {
             $(this).removeClass('is-danger');
         }
     });
-    if(error === false) {
+    if(cng == 3) {
+        error += '<span class="is-danger">เพศ</span> กรุณาระบุเพศของผู้เข้าใช้งาน<br/>' ;
+    }
+    if(error === '') {
         $.send(url+'?php=member' , $('.register').serializePHP('register'), function(data){
             if(data == '0') {
-                $('#btn-login, .register').addClass('is-hidden');
-                $('#btn-user').removeClass('is-hidden');
+                $('.register').addClass('is-hidden');
+                showMsg('ยืนยันการลงทะเบียน', 'ลงทะเบียนเรียบร้อยแล้วกรุณาตรวจสอบอีเมลเพื่อยืนยันการใช้งาน', 'is-success', 270);
             }
             else if(data == 1) {
                 showMsg('คำเตือน', 'พบข้อผิดพลาดในข้อมูลที่ลงทะเบียน', 'is-warning');
@@ -55,6 +71,9 @@ $('#btn-regis').click(function() {
                 showMsg('รายละเอียด', 'ข้อมูลนี้มีการลงทะเบียนเรียบร้อยแล้ว', 'is-info');
             }
         });
+    }
+    else {
+        showMsg('คำเตือน', error, 'is-warning', 320);
     }
 });
 

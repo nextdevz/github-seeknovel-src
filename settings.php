@@ -22,7 +22,8 @@
   $imgDir = $rootUrl.'images/';
   $rootDir = __DIR__.'/';
   $jsDir = $rootDir.'js/';
-  $jsLayout = $rootDir.'js/';
+  $jsApi = $jsDir.'api/';
+  $jsLayout = $jsDir.'layout/';
   $phpDir = $rootDir.'php/';
   $phpClass = $phpDir.'class/';
   $phpLayout = $phpDir.'layout/';

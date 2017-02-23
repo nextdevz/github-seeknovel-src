@@ -2,7 +2,7 @@ function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     if (response.status === 'connected') {
-        testAPI();
+        checkLogin();
     } else if (response.status === 'not_authorized') {
         document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
     } else {
@@ -82,11 +82,9 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-function testAPI() {
+function checkLogin() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
         status.login = true;
-        $('#btn-login').addClass('is-hidden');
-        $('#btn-user').removeClass('is-hidden');
     });
 }

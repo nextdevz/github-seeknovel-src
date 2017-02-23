@@ -44,9 +44,9 @@
                             </span>
                         </p>
                         <?php
-                            echo showIcon('book', '', 'หมวดนิยาย', 'is-hidden-mobile')
-                            .showIcon('pencil', '', 'เขียนนิยาย', 'is-hidden-mobile')
-                            .showIcon('bookmark', '', 'ห้องเก็บนิยาย', 'is-hidden-mobile');
+                            echo showIcon('book', '', 'หมวดนิยาย', '', 'is-hidden-mobile')
+                            .showIcon('pencil', '', 'เขียนนิยาย', '', 'is-hidden-mobile')
+                            .showIcon('bookmark', '', 'ที่คั่นนิยาย', '', 'is-hidden-mobile');
                         ?>
                     </div>
                     <?php
@@ -93,12 +93,12 @@
     </body>
 </html>
 <?php
-    function showIcon($icon, $btn, $data='', $class='') {
-        if($class == 'is-hidden-mobile') {
-            $data = ($data != '' ? "<a class='nav-item is-hidden-tablet'>{$data}</a>" : '');
+    function showIcon($icon, $btn, $data='', $rClass='', $sClass='') {
+        if($sClass == 'is-hidden-mobile') {
+            $data = ($data != '' ? "<span class='is-hidden-tablet-only'>{$data}</span>" : '');
         }
         $btn = ($btn != '' ? 'btn-'.$btn : '');
-        echo "<a class='nav-item {$class} {$btn}' id='{$btn}'><span class='icon'><i class='fa fa-{$icon}'></i></span>{$data}</a>";
+        echo "<a class='nav-item {$rClass} {$btn}' id='{$btn}'><span class='icon {$sClass}'><i class='fa fa-{$icon}'></i></span>{$data}</a>";
     }
     //152054098638718
     //14487da1ccf3dad9c61809deabfed74f
