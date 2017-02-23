@@ -25,6 +25,28 @@ USE novel;
 -- Definition of table `nv_members`
 --
 
+DROP TABLE IF EXISTS `nv_account_facebook`;
+CREATE TABLE `nv_account_facebook` (
+  `id_account` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `link_account` varchar(64) NOT NULL DEFAULT '',
+  `id_member` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id_member`),
+  KEY `id_account` (`id_account`),
+  KEY `link_account` (`link_account`),
+  KEY `id_member` (`id_member`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `nv_account_google`;
+CREATE TABLE `nv_account_google` (
+  `id_account` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `link_account` varchar(64) NOT NULL DEFAULT '',
+  `id_member` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id_member`),
+  KEY `id_account` (`id_account`),
+  KEY `link_account` (`link_account`),
+  KEY `id_member` (`id_member`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `nv_members`;
 CREATE TABLE `nv_members` (
   `id_member` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -34,10 +56,6 @@ CREATE TABLE `nv_members` (
   `email_address` varchar(255) NOT NULL DEFAULT '',
   `birthdate` date NOT NULL DEFAULT '0001-01-01',
   `gender` tinyint(4) unsigned NOT NULL DEFAULT '0',
-  `id_facebook` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `link_facebook` varchar(255) NOT NULL DEFAULT '',
-  `id_google` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `link_google` varchar(255) NOT NULL DEFAULT '',
   `date_register` int(10) unsigned NOT NULL DEFAULT '0',
   `last_login` int(10) unsigned NOT NULL DEFAULT '0',
   `silver_coin` int(10) unsigned NOT NULL DEFAULT '0',
@@ -51,14 +69,12 @@ CREATE TABLE `nv_members` (
   KEY `member_name` (`member_name`),
   KEY `real_name` (`real_name`),
   KEY `birthdate` (`birthdate`),
-  KEY `id_facebook` (`id_facebook`),
-  KEY `link_facebook` (`link_facebook`),
-  KEY `id_google` (`id_google`),
-  KEY `link_google` (`link_google`),
   KEY `date_register` (`date_register`),
   KEY `last_login` (`last_login`),
   KEY `silver_coin` (`silver_coin`),
-  KEY `gold_coin` (`gold_coin`)
+  KEY `gold_coin` (`gold_coin`),
+  KEY `member_ip` (`member_ip`),
+  KEY `member_ip2` (`member_ip2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

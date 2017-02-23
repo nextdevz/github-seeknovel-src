@@ -1,6 +1,6 @@
-/*$('#btn-login').click(function(){
-
-});*/
+$('#btn-login').click(function(){
+    alert(123);
+});
 
 $("#btn-register").click(function(){
   resetSelf();
@@ -13,5 +13,5 @@ $("#btn-facebook").click(function(){
 });
 
 $("#btn-google").click(function(){
-  facebookLogin(dataRegis);
+  //facebookLogin(dataRegis);
 });

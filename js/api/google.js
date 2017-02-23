@@ -1,30 +1,28 @@
-/*var googleUser = {};
+var googleUser = {};
 var startApp = function() {
-  gapi.load('auth2', function(){
-    // Retrieve the singleton for the GoogleAuth library and set up the client.
-    auth2 = gapi.auth2.init({
-    //auth2 = gapi.client.plus.people.get({
-      client_id: '6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com',
-      cookiepolicy: 'http://localhost',
-      // Request scopes in addition to 'profile' and 'email'
-      scope: 'profile email https://www.googleapis.com/auth/plus.login'
-      //scope: 'birthday'
+    gapi.load('auth2', function(){
+        // Retrieve the singleton for the GoogleAuth library and set up the client.
+        auth2 = gapi.auth2.init({
+            client_id: '6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com',
+            cookiepolicy: 'localhost',
+            // Request scopes in addition to 'profile' and 'email'
+            scope: 'profile email'
+        });
+        attachSignin(document.getElementById('btn-google'));
     });
-    attachSignin(document.getElementById('btn-google'));
-  });
 };
-
 function attachSignin(element) {
-  console.log(element.id);
-  auth2.attachClickHandler(element, {},
-      function(googleUser) {
-        document.getElementById('status').innerText = "Signed in: " +
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+            document.getElementById('status').innerText = "Signed in: " +
             googleUser.getBasicProfile().getName();
-      }, function(error) {
+        }, function(error) {
         alert(JSON.stringify(error, undefined, 2));
-      });
+    });
 }
-startApp();*/
+startApp();
+
 
 $('#btn-google').click(function(){
   //var auth2 = gapi.auth2.getAuthInstance();
@@ -45,26 +43,4 @@ $('#btn-google').click(function(){
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
   }*/
-  auth2 = gapi.auth2.init({
-    client_id: 'CLIENT_ID.apps.googleusercontent.com',
-    cookiepolicy: 'single_host_origin', /** Default value **/
-    scope: 'profile'
-  }); 
 });
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
-
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-

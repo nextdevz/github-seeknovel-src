@@ -44,15 +44,15 @@
                             </span>
                         </p>
                         <?php
-                            echo showIcon('book', '', 'หมวดนิยาย', '', 'is-hidden-mobile')
+                            echo showIcon('list', '', 'หมวดนิยาย', '', 'is-hidden-mobile')
                             .showIcon('pencil', '', 'เขียนนิยาย', '', 'is-hidden-mobile')
-                            .showIcon('bookmark', '', 'ที่คั่นนิยาย', '', 'is-hidden-mobile');
+                            .showIcon('tags', '', 'ที่คั่นนิยาย', '', 'is-hidden-mobile');
                         ?>
                     </div>
                     <?php
                         echo showIcon('comment', 'notifi', '<span class="num-notification">2</span>')
                         .showIcon('user', 'user', '', 'is-hidden')
-                        .showIcon('user-plus', 'login');
+                        .showIcon('sign-in', 'accounts');
                     ?>
                     <span class="nav-toggle" id="nav-toggle">
                         <span></span>
@@ -68,8 +68,6 @@
             </div>
         </div>
         <div class="body container day">
-          <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
             <div id="status"></div>
             <?php
                 for($i=0; $i < 200; $i++) {

@@ -190,10 +190,10 @@ function startApp() {
   gapi.load('auth2', function() {
     gapi.client.load('plus','v1').then(function() {
       gapi.signin2.render('signin-button', {
-          scope: 'https://www.googleapis.com/auth/plus.login',
+          scope: 'https://www.googleapis.com/auth/plus.login email',
           fetch_basic_profile: false });
-      gapi.auth2.init({fetch_basic_profile: false,
-          scope:'https://www.googleapis.com/auth/plus.login'}).then(
+          gapi.auth2.init({fetch_basic_profile: false,
+          scope:'https://www.googleapis.com/auth/plus.login email'}).then(
             function (){
               console.log('init');
               auth2 = gapi.auth2.getAuthInstance();

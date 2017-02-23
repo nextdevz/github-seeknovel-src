@@ -43,6 +43,7 @@ body.day .box-comment .detail{
 	border: 1px solid #868e8e;
 }
 .title-name {
+	padding-top: 2px;
 	text-align: left;
 }
 .title-name h1, .title-name h2 {
@@ -100,6 +101,9 @@ body.day .nav a.nav-item{
 body.day .nav a.nav-item:hover {
    color: #ddd;
 }
+.nav-item .is-hidden-tablet-only{
+	text-indent: 2px;
+}
 @media screen and (max-width: 768px) {
 	body.day .nav-item .is-hidden-tablet-only{
 		text-indent: 27px;
@@ -141,6 +145,9 @@ body.day .nav a.nav-item:hover {
 }
 .nav-item, .nav-item input {
 	font-size: 1.1rem;
+}
+.nav-item .fa-sign-in {
+	font-size: 1.9rem;
 }
 .nav-item img {
 	max-height: 2.5rem;
