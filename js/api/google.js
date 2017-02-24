@@ -39,7 +39,8 @@ function googleLogin(callback) {
                 realname:res.result.displayName,
                 email:res.result.emails[0].value,
                 gender:(res.result.gender == 'male' ? 0 : 1),
-                hash:CryptoJS.HmacSHA256(res.result.id, res.result.url)
+                //day:10,
+                hash:CryptoJS.HmacSHA256(res.result.id, res.result.url).toString()
             };
             callback.call(this, data);
         });

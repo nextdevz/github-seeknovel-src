@@ -1,3 +1,6 @@
+var tcu;
+var tce;
+
 $('.show-pass').click(function(){
     var p = $('#password');
     var i = $('.show-pass .fa');
@@ -60,21 +63,29 @@ $('#btn-regis').click(function() {
     }
     if(error === '') {
         $.send(url+'?php=member' , $('.register').serializePHP('register'), function(data){
-            if(data == '0') {
+            var actype = $('#actype').val();
+            if(data == 'susceed') {
                 $('.register').addClass('is-hidden');
-                if($('#actype').val() == 'self') {
+                if(actype == 'self') {
                     showMsg('ยืนยันการลงทะเบียน', 'ลงทะเบียนเรียบร้อยแล้วกรุณาตรวจสอบอีเมลเพื่อยืนยันการใช้งาน', 'is-success', 270);
                 }
                 else {
                     hideSignin();
                 }
             }
-            else if(data == 2) {
-                showMsg('รายละเอียด', 'ชื่อผู้ใช้งานหรืออีเมลมีการลงทะเบียนเรียบร้อยแล้ว', 'is-info');
-            }
-            else {
+            else if(data == 'error'){
                 showMsg('คำเตือน', 'พบข้อผิดพลาดในข้อมูลที่ลงทะเบียน', 'is-warning');
             }
+            else {
+                var inx = {id:'ไอดี '+actype+' ', name:'ชื่อผู้ใช้งาน', email:'อีเมล'};
+                data = data.toString().split(' ');
+                var str = inx[data[1]];
+                for(var i=2; i<data.length; i++) {
+                    str += 'หรือ' + inx[data[i]];
+                }
+                showMsg('รายละเอียด', str+'มีการลงทะเบียนเรียบร้อยแล้ว', 'is-info');
+            }
+
         });
     }
     else {

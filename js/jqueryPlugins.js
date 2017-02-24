@@ -109,7 +109,7 @@ $(function(){
 						$(this).val(null);
 					}
 				}
-				else {
+				else if(d[n] != undefined) {
 					if(this.tagName == 'INPUT') {
 						if(this.type == 'checkbox' || this.type == 'radio') {
 							$(this).prop('checked', ($(this).val() == d[n] ? true : false));

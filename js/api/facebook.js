@@ -30,7 +30,7 @@ function facebookLogin(callback) {
                     email:res.email,
                     birthday:date['1']+'/'+date['0']+'/'+date['2'],
                     gender:(res.gender == 'male' ? 0 : 1),
-                    hash:CryptoJS.HmacSHA256(res.id, res.link)
+                    hash:CryptoJS.HmacSHA256(res.id, res.link).toString()
                 };
                 callback.call(this, data);
             });

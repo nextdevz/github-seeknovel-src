@@ -13,10 +13,25 @@
         }
     }
 
+    function password($pass, $key) {
+        return hash_hmac('sha256', $pass, $key.'@ND-PWD');
+    }
+
+    function login() {
+        $sql = new c_query();
+        $sql->pre_sel('*', 'nv_members', 'member_name=? OR email_address=?', array($_POST['user'], $_POST['user']));
+        if($sql->num_rows() == 1 && $sql->v('passwd') == password($_POST['passwd'], $sql->v('member_name'))) {
+            $sql->json($sql->record());
+        }
+        else {
+            return 'error';
+        }
+    }
+
     function register() {
         $fc = new c_function();
         $sql = new c_query();
-        $result = 0;
+        $result = 'susceed';
         $date = explode('/', $_POST['birthday']);
         if(checkdate($date['1'], $date['0'], $date['2']) === true && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && preg_match('/^[0-2]{1}$/', $_POST['gender'])) {
             $ip = $fc->get_real_ip(true);
@@ -31,13 +46,23 @@
             );
             if($_POST['actype'] == 'self') {
                 $data['member_name'] = $_POST['username'];
-                $data['passwd'] = $_POST['password'];
-                $sql->pre_sel('id_member', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
-                if($sql->num_rows() == 0) {
+                $data['passwd'] = password($_POST['password'], $_POST['username']);
+                $sql->pre_sel('member_name, email_address', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
+                $num = $sql->num_rows();
+                if($num == 0) {
                     $sql->pre_ins('nv_members', $sql->data2exec($data));
                 }
+                else if($num > 1){
+                    $result = 'duplicate name email';
+                }
                 else {
-                    $result = 2;
+                    $result = 'duplicate';
+                    if($sql->v('member_name') == $_POST['username']) {
+                        $result = ' name';
+                    }
+                    if($sql->v('email_address') == $_POST['email']) {
+                        $result .= ' email';
+                    }
                 }
             }
             else {
@@ -54,20 +79,20 @@
                             $sql->pre_ins('nv_account_'.$_POST['actype'], $sql->data2exec($account));
                         }
                         else {
-                            $result = 2;
+                            $result = 'duplicate email';
                         }
                     }
                     else {
-                        $result = 2;
+                        $result = 'duplicate id';
                     }
                 }
                 else {
-                    $result = 1;
+                    $result = 'error';
                 }
             }
         }
         else {
-            $result = 1;
+            $result = 'error';
         }
         echo $sql->json($result);
     }

@@ -5,13 +5,13 @@
     <div class="detail">
         <p class="control center head">เข้าใช้งาน <?php echo $title;?></p>
         <p class="control has-icon has-icon-left">
-            <input id="user" class="input" type="text" placeholder="ชื่อผู้ใช้งานหรืออีเมล">
+            <input id="user" name="user" class="input" type="text" placeholder="ชื่อผู้ใช้งานหรืออีเมล">
             <span class="icon">
                 <i class="fa fa-user"></i>
             </span>
         </p>
         <p class="control has-icon has-icon-left">
-            <input id="passwd" class="input" type="password" placeholder="รหัสผ่าน">
+            <input id="passwd" name="passwd" class="input" type="password" placeholder="รหัสผ่าน">
             <span class="icon">
                 <i class="fa fa-unlock-alt"></i>
             </span>

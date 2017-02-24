@@ -51,7 +51,7 @@ CREATE TABLE `nv_account_facebook` (
 
 DROP TABLE IF EXISTS `nv_account_google`;
 CREATE TABLE `nv_account_google` (
-  `id_account` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `id_account` DECIMAL(21,0) NOT NULL DEFAULT '0',
   `link_account` varchar(64) NOT NULL DEFAULT '',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`),
@@ -94,6 +94,7 @@ CREATE TABLE `nv_members` (
   PRIMARY KEY (`id_member`),
   KEY `member_name` (`member_name`),
   KEY `real_name` (`real_name`),
+  KEY `email_address` (`email_address`),
   KEY `birthdate` (`birthdate`),
   KEY `date_register` (`date_register`),
   KEY `last_login` (`last_login`),
