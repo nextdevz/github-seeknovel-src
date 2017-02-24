@@ -22,30 +22,56 @@ CREATE DATABASE IF NOT EXISTS novel;
 USE novel;
 
 --
--- Definition of table `nv_members`
+-- Definition of table `nv_account_facebook`
 --
 
 DROP TABLE IF EXISTS `nv_account_facebook`;
 CREATE TABLE `nv_account_facebook` (
-  `id_account` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `id_account` bigint(20) unsigned NOT NULL DEFAULT '0',
   `link_account` varchar(64) NOT NULL DEFAULT '',
-  `id_member` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`),
   KEY `id_account` (`id_account`),
   KEY `link_account` (`link_account`),
-  KEY `id_member` (`id_member`)
+  KEY `id_member` (`id_member`),
+  CONSTRAINT `FK_nv_account_facebook_id_member` FOREIGN KEY (`id_member`) REFERENCES `nv_members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `nv_account_facebook`
+--
+
+/*!40000 ALTER TABLE `nv_account_facebook` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nv_account_facebook` ENABLE KEYS */;
+
+
+--
+-- Definition of table `nv_account_google`
+--
 
 DROP TABLE IF EXISTS `nv_account_google`;
 CREATE TABLE `nv_account_google` (
-  `id_account` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `id_account` bigint(20) unsigned NOT NULL DEFAULT '0',
   `link_account` varchar(64) NOT NULL DEFAULT '',
-  `id_member` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`),
   KEY `id_account` (`id_account`),
   KEY `link_account` (`link_account`),
-  KEY `id_member` (`id_member`)
+  KEY `id_member` (`id_member`),
+  CONSTRAINT `FK_nv_account_google_id_member` FOREIGN KEY (`id_member`) REFERENCES `nv_members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `nv_account_google`
+--
+
+/*!40000 ALTER TABLE `nv_account_google` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nv_account_google` ENABLE KEYS */;
+
+
+--
+-- Definition of table `nv_members`
+--
 
 DROP TABLE IF EXISTS `nv_members`;
 CREATE TABLE `nv_members` (

@@ -1,46 +1,48 @@
-var googleUser = {};
-var startApp = function() {
-    gapi.load('auth2', function(){
-        // Retrieve the singleton for the GoogleAuth library and set up the client.
-        auth2 = gapi.auth2.init({
-            client_id: '6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com',
-            cookiepolicy: 'localhost',
-            // Request scopes in addition to 'profile' and 'email'
-            scope: 'profile email'
+var auth2 = {};
+function startApp() {
+    gapi.load('auth2', function() {
+        gapi.client.load('plus','v1').then(function() {
+            auth2 = gapi.auth2.init({
+                client_id: '6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com',
+                fetch_basic_profile: false,
+                scope:'https://www.googleapis.com/auth/plus.login email'
+            });/*.then(function (){
+                auth2 = gapi.auth2.getAuthInstance();
+                auth2.isSignedIn.listen(updateSignIn);
+                auth2.then(updateSignIn);
+            });*/
         });
-        attachSignin(document.getElementById('btn-google'));
     });
-};
-function attachSignin(element) {
-    console.log(element.id);
-    auth2.attachClickHandler(element, {},
-        function(googleUser) {
-            document.getElementById('status').innerText = "Signed in: " +
-            googleUser.getBasicProfile().getName();
-        }, function(error) {
-        alert(JSON.stringify(error, undefined, 2));
+}
+
+var updateSignIn = function() {
+    console.log('update sign in state');
+    if (auth2.isSignedIn.get()) {
+        console.log('signed in');
+        //helper.onSignInCallback(gapi.auth2.getAuthInstance());
+    }
+    else {
+        console.log('signed out');
+        //helper.onSignInCallback(gapi.auth2.getAuthInstance());
+    }
+}
+
+function googleLogin(callback) {
+    auth2.signIn().then(function (){
+        gapi.client.plus.people.get({
+            'userId': 'me'
+        }).then(function(res) {
+            var data = {
+                actype:'google',
+                idcode:res.result.id,
+                link:res.result.url,
+                realname:res.result.displayName,
+                email:res.result.emails[0].value,
+                gender:(res.result.gender == 'male' ? 0 : 1),
+                hash:CryptoJS.HmacSHA256(res.result.id, res.result.url)
+            };
+            callback.call(this, data);
+        });
     });
 }
 startApp();
-
-
-$('#btn-google').click(function(){
-  //var auth2 = gapi.auth2.getAuthInstance();
-  /*auth2.signIn().then(function(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    $.print(profile);
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  });*/
-  /*if (auth2.isSignedIn.get()) {
-    var profile = auth2.currentUser.get().getBasicProfile();
-    console.log('ID: ' + profile.getId());
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-  }*/
-});

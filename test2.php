@@ -25,7 +25,9 @@
   <title>Google+ JavaScript Quickstart</title>
   <!-- JavaScript specific to this application that is not related to API
      calls -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="js/jqueryPlugins.js"></script>
+  <link href="css/jqueryPlugins.css" rel="stylesheet" type="text/css">
   <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com"></meta>
 </head>
 <body>
@@ -106,6 +108,7 @@ var helper = (function() {
         'userId': 'me',
         'collection': 'visible'
       }).then(function(res) {
+          $.print(res);
         var people = res.result;
         $('#visiblePeople').empty();
         $('#visiblePeople').append('Number of people visible to this app: ' +
@@ -124,6 +127,7 @@ var helper = (function() {
       gapi.client.plus.people.get({
         'userId': 'me'
       }).then(function(res) {
+          $.print(res);
         var profile = res.result;
         console.log(profile);
         $('#profile').empty();
@@ -187,21 +191,22 @@ var updateSignIn = function() {
  * This method sets up the sign-in listener after the client library loads.
  */
 function startApp() {
-  gapi.load('auth2', function() {
-    gapi.client.load('plus','v1').then(function() {
-      gapi.signin2.render('signin-button', {
-          scope: 'https://www.googleapis.com/auth/plus.login email',
-          fetch_basic_profile: false });
-          gapi.auth2.init({fetch_basic_profile: false,
-          scope:'https://www.googleapis.com/auth/plus.login email'}).then(
+    gapi.load('auth2', function() {
+        gapi.client.load('plus','v1').then(function() {
+            gapi.signin2.render('signin-button', {
+                scope: 'https://www.googleapis.com/auth/plus.login email',
+                fetch_basic_profile: false });
+            gapi.auth2.init({
+                fetch_basic_profile: false,
+                scope:'https://www.googleapis.com/auth/plus.login email'}).then(
             function (){
               console.log('init');
               auth2 = gapi.auth2.getAuthInstance();
               auth2.isSignedIn.listen(updateSignIn);
               auth2.then(updateSignIn);
             });
+        });
     });
-  });
 }
 </script>
 <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>

@@ -7,7 +7,7 @@ $("#btn-notifi").click(function(){
     onOffBtn('.notifi', ($('.notifi .detail').html().trim() != ''));
 });
 
-$("#btn-accounts").click(function(){
+$("#btn-sign-in").click(function(){
     onOffBtn('.login', $('.register').hasClass('is-hidden'));
 });
 

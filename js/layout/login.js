@@ -5,13 +5,31 @@ $('#btn-login').click(function(){
 $("#btn-register").click(function(){
   resetSelf();
   resetShare();
-  $('#retype').val('self');
+  $('#actype').val('self');
 });
 
 $("#btn-facebook").click(function(){
-  facebookLogin(dataRegis);
+  facebookLogin(checkAccount);
 });
 
-$("#btn-google").click(function(){
-  //facebookLogin(dataRegis);
+$('#btn-google').click(function(){
+    googleLogin(dataRegis);
 });
+
+function checkAccount(data){
+    $.send(url+'?php=member', 'process=account&idcode='+data.idcode+'&actype='+data.actype, function(d){
+        if(d == 0) {
+            dataRegis(data);
+        }
+        else {
+            hideSignin();
+        }
+    });
+}
+
+function hideSignin() {
+    status.login = true;
+    $('.login').addClass('is-hidden');
+    $('#btn-sign-in').addClass('is-hidden');
+    $('#btn-user').removeClass('is-hidden');
+}

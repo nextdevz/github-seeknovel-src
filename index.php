@@ -9,12 +9,12 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="Author" content="Thawatchai Kaosol">
         <meta name="License" content="License: Copyright 2014, NextDEV, All Rights Reserved.">
+        <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com"></meta>
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.min.js"></script>
-        <script src="https://apis.google.com/js/api:client.js"></script>
         <!--<script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com">-->
 
@@ -52,7 +52,7 @@
                     <?php
                         echo showIcon('comment', 'notifi', '<span class="num-notification">2</span>')
                         .showIcon('user', 'user', '', 'is-hidden')
-                        .showIcon('sign-in', 'accounts');
+                        .showIcon('sign-in', 'sign-in');
                     ?>
                     <span class="nav-toggle" id="nav-toggle">
                         <span></span>
@@ -87,6 +87,7 @@
                 </article>
             </div>
         </div>
+        <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
         <script><?php include_once($jsDir.'javascript.php');?></script>
     </body>
 </html>

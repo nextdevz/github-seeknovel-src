@@ -3,7 +3,7 @@ function showMsg(title, data, type, width) {
     if(type == undefined) type = 'is-info';
     if(width != undefined) $(bm+'.message').css('width', width+'px');
     $(bm).removeClass('is-hidden');
-    $(bm+'.message').addClass(type);
+    $(bm+'.message').attr('class','message '+type);
     $(bm+'.message-header p').html(title);
     $(bm+'.message-body').html(data);
 }
