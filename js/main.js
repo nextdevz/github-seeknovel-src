@@ -1,8 +1,9 @@
-function showMsg(title, data, type) {
-    if(type == undefined) type = 'is-info';
+function showMsg(title, data, type, width) {
     var bm = '.box-message ';
+    if(type == undefined) type = 'is-info';
+    if(width != undefined) $(bm+'.message').css('width', width+'px');
     $(bm).removeClass('is-hidden');
-    $(bm+'.message').addClass(type);
+    $(bm+'.message').attr('class','message '+type);
     $(bm+'.message-header p').html(title);
     $(bm+'.message-body').html(data);
 }

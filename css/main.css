@@ -1,6 +1,6 @@
-/*html {
-	background-color: #d0ffe0;
-}*/
+html {
+	background-color: #555555;
+}
 .menu {
 	position: fixed;
 	width: 100%;
@@ -9,10 +9,41 @@
 }
 .menu, .nav {
 	height: 50px;
-	background: #00d1b2 none repeat scroll 0 0;
+	background: #363e3e none repeat scroll 0 0;
 	z-index: 2;
 }
+body.day {
+	background-attachment: fixed;
+	background-image: url("../images/background2.jpg"), url("../images/background2.jpg");
+	background-position: left top, right top;
+	background-repeat: no-repeat;
+	background-size: 50% 100%;
+}
+body.day input {
+	background-color: #fafafa;
+}
+body.day .body.container {
+	background-color: #f3f3f3;
+}
+body.day .text-line span {
+	background: #f3f3f3;
+}
+body.day .box-comment .detail{
+	background-color: #f3f3f3;
+}
+@media screen and (max-width: 768px) {
+	body.day .nav-menu.is-active {
+		background-color: #f3f3f3;
+	}
+}
+.body {
+	margin-top: 50px;
+}
+.body.container {
+	border: 1px solid #868e8e;
+}
 .title-name {
+	padding-top: 2px;
 	text-align: left;
 }
 .title-name h1, .title-name h2 {
@@ -64,20 +95,32 @@
    top: 1.7rem;
    right: 1.9rem;
 }
-nav .icon {
-   color: #f2f5f4;
+body.day .nav a.nav-item{
+   color: #fff;
 }
-nav .icon:hover {
-   color: #ffffff;
+body.day .nav a.nav-item:hover {
+   color: #ddd;
+}
+.nav-item .is-hidden-tablet-only{
+	text-indent: 2px;
+}
+@media screen and (max-width: 768px) {
+	body.day .nav-item .is-hidden-tablet-only{
+		text-indent: 27px;
+	   	color: #363e3e;
+	}
+	body.day .nav-item .is-hidden-tablet-only:hover {
+	   color: #565e5e;
+	}
 }
 .nav-toggle:hover{
-	background-color: #70d9ba;
+	background-color: #565e5e;
 }
 .nav-toggle span {
     height: 3px;
 	width:20px;
 	margin-left: -10px;
-	background-color: #007152;
+	background-color: #fff;
 	border-radius: 3px;
 }
 .nav-toggle span:nth-child(1) {
@@ -87,7 +130,7 @@ nav .icon:hover {
     margin-top: 5px;
 }
 .nav-toggle.is-active span {
-    background-color: #209172;
+    background-color: #fff;
 }
 .nav-toggle.is-active span:nth-child(1) {
 	margin-top: -8px;
@@ -103,8 +146,8 @@ nav .icon:hover {
 .nav-item, .nav-item input {
 	font-size: 1.1rem;
 }
-.nav-item.is-hidden-tablet {
-	text-indent: 26px;
+.nav-item .fa-sign-in {
+	font-size: 1.9rem;
 }
 .nav-item img {
 	max-height: 2.5rem;
@@ -125,6 +168,9 @@ nav .icon:hover {
 	background-color: #ff3860;
 	border: 2px solid white;
 	border-radius: 6px;
+}
+#btn-notifi:hover .num-notification {
+   border-color: #ddd;
 }
 p.nav-item {
 	padding: 0rem;
@@ -164,15 +210,14 @@ p.nav-item {
 }
 .login .detail, .register .detail{
 	padding: 20px 20px 10px 20px;
-	background-color: #fff;
 	text-align: center;
 }
 .box-comment {
 	position: absolute;
 	top: 50px;
 	right: 0px;
-	color: #00d1b2;
-	z-index: 5;
+	color: #363e3e;
+	z-index: 90;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
 }
 .box-comment div.self, .box-comment div.other {
@@ -201,6 +246,12 @@ p.nav-item {
    	width: 100%;
 	margin-bottom: 0.75rem;
 }
+.box-comment a{
+   	color:#363e3e;
+}
+.box-comment a:hover{
+   	color:#707b7b;
+}
 @media screen and (min-width: 769px) {
 	.box-comment .arrow-box{
 		right: 11px;
@@ -216,7 +267,6 @@ p.nav-item {
 		top: -10px;
 	}
 	.box-comment .arrow-show{
-		background-color: #fff;
 		content: "";
 		position: relative;
 		width: 18px;
@@ -228,6 +278,9 @@ p.nav-item {
 		-o-transform: rotate(45deg);
 		transform: rotate(45deg);
 		border: 2px solid #999;
+	}
+	.box-comment .arrow-show{
+		background-color: #f3f3f3;
 	}
 	.div-show-tooltip .arrow-show.up{
 		top:-7px;
@@ -242,14 +295,13 @@ p.nav-item {
 .control.text-line {
 	width:100%;
 	text-align:center;
-	border-bottom: 1px solid #00d1b2;
+	border-bottom: 1px solid #363e3e;
 	line-height:0.1em;
 	background:#fff;
 	margin:10px 0px 20px;
 }
 .text-line span {
-	background:#fff;
-	padding:0 10px;
+	padding: 0 10px;
 }
 /*----------------------------------------------------------------------------------------------------------------------------*/
 .box-message {
@@ -263,6 +315,10 @@ p.nav-item {
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.6);
 }
+.box-message-v span.is-danger{
+	font-weight: bold;
+	color: #ff3860;
+}
 .box-message-v {
 	display: table-cell;
     vertical-align: middle;
@@ -271,12 +327,11 @@ p.nav-item {
 	display: inline-block;
 	width: 230px;
 }
+.box-message .message-header {
+	font-weight: bold;
+}
 .box-message .message-body{
 	text-align: left;
-}
-.body {
-	height: 2500px;
-	margin-top: 50px;
 }
 .delete {
     font-size: 0.7rem;

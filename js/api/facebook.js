@@ -2,7 +2,7 @@ function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     if (response.status === 'connected') {
-        testAPI();
+        checkLogin();
     } else if (response.status === 'not_authorized') {
         document.getElementById('status').innerHTML = 'Please log ' + 'into this app.';
     } else {
@@ -12,27 +12,32 @@ function statusChangeCallback(response) {
 
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
+        $.print(response);
         statusChangeCallback(response);
     });
 }
 
 function facebookLogin(callback) {
-  FB.login(function(response) {
-    if(response.authResponse) {
-      FB.api('/me?fields=id,link,name,email,gender,birthday', function(response) {
-        var data = response;
-        data.idcode = data.id;
-        data.realname = data.name;
-        var date = data.birthday.split('/');
-        data.birthday = date['1']+'/'+date['0']+'/'+date['2'];
-        data.gender = (data.gender == 'male' ? 0 : 1);
-        data.hash = CryptoJS.HmacSHA256(data.id, data.link);
-        callback.call(this, data);
-      });
-    } else {
-        console.log('User cancelled login or did not fully authorize.');
-    }
-  },{scope: 'email, public_profile, user_friends, user_birthday'});
+    FB.login(function(response) {
+        if(response.authResponse) {
+            FB.api('/me?fields=id,link,name,email,gender,birthday', function(res) {
+                var date = res.birthday.split('/');
+                var data = {
+                    actype:'facebook',
+                    idcode:res.id,
+                    link:res.link,
+                    realname:res.name,
+                    email:res.email,
+                    birthday:date['1']+'/'+date['0']+'/'+date['2'],
+                    gender:(res.gender == 'male' ? 0 : 1),
+                    hash:CryptoJS.HmacSHA256(res.id, res.link).toString()
+                };
+                callback.call(this, data);
+            });
+        } else {
+            console.log('User cancelled login or did not fully authorize.');
+        }
+    },{scope: 'email, public_profile, user_friends, user_birthday'});
 }
 
 function Logout() {
@@ -82,11 +87,9 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-function testAPI() {
+function checkLogin() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
         status.login = true;
-        $('#btn-login').addClass('is-hidden');
-        $('#btn-user').removeClass('is-hidden');
     });
 }

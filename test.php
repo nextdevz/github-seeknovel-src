@@ -4,6 +4,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="js/jqueryPlugins.js"></script>
   <script src="https://apis.google.com/js/api:client.js"></script>
+  <!--<script src="https://apis.google.com/js/client:platform.js"></script>-->
   <link href="css/jqueryPlugins.css" rel="stylesheet" type="text/css">
   <script>
   var googleUser = {};
@@ -19,13 +20,31 @@
       });
       attachSignin(document.getElementById('customBtn'));
     });
-  };
+};
+/*function startApp() {
+  gapi.load('auth2', function() {
+    gapi.client.load('plus','v1').then(function() {
+      gapi.signin2.render('signin-button', {
+          scope: 'https://www.googleapis.com/auth/plus.login email',
+          fetch_basic_profile: false });
+          gapi.auth2.init({fetch_basic_profile: false,
+          scope:'https://www.googleapis.com/auth/plus.login email'}).then(
+            function (){
+              console.log('init');
+              auth2 = gapi.auth2.getAuthInstance();
+              auth2.isSignedIn.listen(updateSignIn);
+              auth2.then(updateSignIn);
+            });
+    });
+  });
+}*/
 
   var request = gapi.client.plus.people.get({
     'userId' : '116458417000078178398'
   });
 
   request.execute(function(resp) {
+      $.print(resp);
     console.log('ID: ' + resp.id);
     console.log('Display Name: ' + resp.displayName);
     console.log('Image URL: ' + resp.image.url);

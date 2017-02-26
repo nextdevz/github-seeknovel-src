@@ -4,7 +4,7 @@
     </div>
     <div class="detail">
         <p class="control center head">สมัครสมาชิก <?php echo $title;?></p>
-        <input id="retype" name="retype" type="hidden" value="self">
+        <input id="actype" name="actype" type="hidden" value="self">
         <div class="self">
             <p class="control has-icon has-icon-left">
                 <input id="username" name="username" class="input" type="text" placeholder="ชื่อผู้ใช้งาน" maxlength="80" minlength="4" regexp="^[A-Za-z0-9-]{3,20}$">
@@ -56,7 +56,7 @@
             <p id="birthday-s" class="control has-addons has-addons-centered is-hidden">
               <span class="select">
                 <select id="day" name="day">
-                    <option value='0'>วัน</option>
+                    <option value='0' selected="selected">วัน</option>
                     <?php
                         for($i=1; $i<=31; $i++) {
                             echo "<option value='{$i}'>{$i}</option>";
@@ -66,7 +66,7 @@
               </span>
               <span class="select">
                 <select id="month" name="month">
-                    <option value='0'>เดือน</option>
+                    <option value='0' selected="selected">เดือน</option>
                     <?php
                         $month = array('1'=>'ม.ค.', '2'=>'ก.พ.', '3'=>'มี.ค.', '4'=>'เม.ย.', '5'=>'พ.ค.', '6'=>'มิ.ย.', '7'=>'ก.ค.', '8'=>'ส.ค.', '9'=>'ก.ย.', '10'=>'ต.ค.', '11'=>'พ.ย.', '12'=>'ธ.ค.');
                         for($i=1; $i<=12; $i++) {
@@ -77,7 +77,7 @@
               </span>
               <span class="select">
                 <select id="year" name="year">
-                    <option value='0'>ปี</option>
+                    <option value='0' selected="selected">ปี</option>
                     <?php
                         $st = date('Y') - 6;
                         $ed = $st - 100;
@@ -103,7 +103,7 @@
                 </label>
             </p>
             <p class="control">
-                <button id="btn-regis" class="button is-success">สมัครสมาชิก</button>
+                <button id="btn-regis" class="button is-dark">สมัครสมาชิก</button>
             </p>
         <div>
     </div>

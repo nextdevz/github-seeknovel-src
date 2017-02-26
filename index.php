@@ -9,21 +9,19 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="Author" content="Thawatchai Kaosol">
         <meta name="License" content="License: Copyright 2014, NextDEV, All Rights Reserved.">
+        <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com"></meta>
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.min.js"></script>
-        <script src="https://apis.google.com/js/api:client.js"></script>
-        <!--<script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com">-->
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css"/>
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo $cssDir;?>jqueryPlugins.css">
         <link rel="stylesheet" href="<?php echo $cssDir;?>main.css">
     </head>
-    <body>
+    <body class="day">
         <div class="menu">
             <div class="container">
                 <nav class="nav">
@@ -44,15 +42,15 @@
                             </span>
                         </p>
                         <?php
-                            echo showIcon('book', '', 'หมวดนิยาย', 'is-hidden-mobile')
-                            .showIcon('pencil', '', 'เขียนนิยาย', 'is-hidden-mobile')
-                            .showIcon('bookmark', '', 'ห้องเก็บนิยาย', 'is-hidden-mobile');
+                            echo showIcon('list', '', 'หมวดนิยาย', '', 'is-hidden-mobile')
+                            .showIcon('pencil', '', 'เขียนนิยาย', '', 'is-hidden-mobile')
+                            .showIcon('tags', '', 'ที่คั่นนิยาย', '', 'is-hidden-mobile');
                         ?>
                     </div>
                     <?php
                         echo showIcon('comment', 'notifi', '<span class="num-notification">2</span>')
                         .showIcon('user', 'user', '', 'is-hidden')
-                        .showIcon('user-plus', 'login');
+                        .showIcon('sign-in', 'sign-in');
                     ?>
                     <span class="nav-toggle" id="nav-toggle">
                         <span></span>
@@ -67,9 +65,7 @@
                 </nav>
             </div>
         </div>
-        <div class="body container">
-          <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
+        <div class="body container day">
             <div id="status"></div>
             <?php
                 for($i=0; $i < 200; $i++) {
@@ -89,20 +85,16 @@
                 </article>
             </div>
         </div>
+        <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
         <script><?php include_once($jsDir.'javascript.php');?></script>
     </body>
 </html>
 <?php
-    function showIcon($icon, $btn, $data='', $class='') {
-        if($class == 'is-hidden-mobile') {
-            $data = ($data != '' ? "<a class='nav-item is-hidden-tablet'>{$data}</a>" : '');
+    function showIcon($icon, $btn, $data='', $rClass='', $sClass='') {
+        if($sClass == 'is-hidden-mobile') {
+            $data = ($data != '' ? "<span class='is-hidden-tablet-only'>{$data}</span>" : '');
         }
         $btn = ($btn != '' ? 'btn-'.$btn : '');
-        echo "<a class='nav-item {$class} {$btn}' id='{$btn}'><span class='icon'><i class='fa fa-{$icon}'></i></span>{$data}</a>";
+        echo "<a class='nav-item {$rClass} {$btn}' id='{$btn}'><span class='icon {$sClass}'><i class='fa fa-{$icon}'></i></span>{$data}</a>";
     }
-    //152054098638718
-    //14487da1ccf3dad9c61809deabfed74f
-
-    //6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com
-    //Be16h3-gaRpzpcowWChaosWk
 ?>

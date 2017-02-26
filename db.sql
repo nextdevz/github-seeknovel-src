@@ -22,6 +22,54 @@ CREATE DATABASE IF NOT EXISTS novel;
 USE novel;
 
 --
+-- Definition of table `nv_account_facebook`
+--
+
+DROP TABLE IF EXISTS `nv_account_facebook`;
+CREATE TABLE `nv_account_facebook` (
+  `id_account` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `link_account` varchar(64) NOT NULL DEFAULT '',
+  `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_member`),
+  KEY `id_account` (`id_account`),
+  KEY `link_account` (`link_account`),
+  KEY `id_member` (`id_member`),
+  CONSTRAINT `FK_nv_account_facebook_id_member` FOREIGN KEY (`id_member`) REFERENCES `nv_members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `nv_account_facebook`
+--
+
+/*!40000 ALTER TABLE `nv_account_facebook` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nv_account_facebook` ENABLE KEYS */;
+
+
+--
+-- Definition of table `nv_account_google`
+--
+
+DROP TABLE IF EXISTS `nv_account_google`;
+CREATE TABLE `nv_account_google` (
+  `id_account` DECIMAL(21,0) NOT NULL DEFAULT '0',
+  `link_account` varchar(64) NOT NULL DEFAULT '',
+  `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_member`),
+  KEY `id_account` (`id_account`),
+  KEY `link_account` (`link_account`),
+  KEY `id_member` (`id_member`),
+  CONSTRAINT `FK_nv_account_google_id_member` FOREIGN KEY (`id_member`) REFERENCES `nv_members` (`id_member`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `nv_account_google`
+--
+
+/*!40000 ALTER TABLE `nv_account_google` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nv_account_google` ENABLE KEYS */;
+
+
+--
 -- Definition of table `nv_members`
 --
 
@@ -34,11 +82,7 @@ CREATE TABLE `nv_members` (
   `email_address` varchar(255) NOT NULL DEFAULT '',
   `birthdate` date NOT NULL DEFAULT '0001-01-01',
   `gender` tinyint(4) unsigned NOT NULL DEFAULT '0',
-  `id_facebook` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `link_facebook` varchar(255) NOT NULL DEFAULT '',
-  `id_google` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `link_google` varchar(255) NOT NULL DEFAULT '',
-  `date_regis` int(10) unsigned NOT NULL DEFAULT '0',
+  `date_register` int(10) unsigned NOT NULL DEFAULT '0',
   `last_login` int(10) unsigned NOT NULL DEFAULT '0',
   `silver_coin` int(10) unsigned NOT NULL DEFAULT '0',
   `gold_coin` int(10) unsigned NOT NULL DEFAULT '0',
@@ -50,15 +94,14 @@ CREATE TABLE `nv_members` (
   PRIMARY KEY (`id_member`),
   KEY `member_name` (`member_name`),
   KEY `real_name` (`real_name`),
+  KEY `email_address` (`email_address`),
   KEY `birthdate` (`birthdate`),
-  KEY `id_facebook` (`id_facebook`),
-  KEY `link_facebook` (`link_facebook`),
-  KEY `id_google` (`id_google`),
-  KEY `link_google` (`link_google`),
-  KEY `date_regis` (`date_regis`),
+  KEY `date_register` (`date_register`),
   KEY `last_login` (`last_login`),
   KEY `silver_coin` (`silver_coin`),
-  KEY `gold_coin` (`gold_coin`)
+  KEY `gold_coin` (`gold_coin`),
+  KEY `member_ip` (`member_ip`),
+  KEY `member_ip2` (`member_ip2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
