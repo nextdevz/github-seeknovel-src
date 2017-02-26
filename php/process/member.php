@@ -58,7 +58,7 @@
                 else {
                     $result = 'duplicate';
                     if($sql->v('member_name') == $_POST['username']) {
-                        $result = ' name';
+                        $result .= ' name';
                     }
                     if($sql->v('email_address') == $_POST['email']) {
                         $result .= ' email';

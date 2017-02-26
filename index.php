@@ -15,8 +15,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.min.js"></script>
-        <!--<script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com">-->
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css"/>
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -99,9 +97,4 @@
         $btn = ($btn != '' ? 'btn-'.$btn : '');
         echo "<a class='nav-item {$rClass} {$btn}' id='{$btn}'><span class='icon {$sClass}'><i class='fa fa-{$icon}'></i></span>{$data}</a>";
     }
-    //152054098638718
-    //14487da1ccf3dad9c61809deabfed74f
-
-    //6246343810-usvdud7a236bnrvabf2f7ro02scq1qjc.apps.googleusercontent.com
-    //Be16h3-gaRpzpcowWChaosWk
 ?>

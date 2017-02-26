@@ -93,16 +93,6 @@ $('#btn-regis').click(function() {
     }
 });
 
-function chkFocus(cond, obj, obj2) {
-    if(obj2 == undefined) obj2 = obj;
-    if(cond == true) {
-        obj.addClass('is-danger');
-    }
-    else {
-        obj2.removeClass('is-danger');
-    }
-}
-
 function resetSelf() {
     var regis = ".register ";
     $(regis+'.self').removeClass('is-hidden');
