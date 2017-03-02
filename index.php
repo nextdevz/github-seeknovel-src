@@ -58,9 +58,9 @@
                         <span></span>
                     </span>
                     <div id="box-comment">
-                        <?php include_once($phpLayout.'notification.php');?>
-                        <?php include_once($phpLayout.'login.php');?>
-                        <?php include_once($phpLayout.'register.php');?>
+                        <?php //include_once($phpLayout.'notification.php');?>
+                        <?php //include_once($phpLayout.'login.php');?>
+                        <?php //include_once($phpLayout.'register.php');?>
                     </div>
                 </nav>
             </div>

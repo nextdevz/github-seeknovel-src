@@ -39,3 +39,6 @@
         </a>
     </div>
 </div>
+<script>
+    <?php include_once($jsLayout.'login.js');?>
+</script>

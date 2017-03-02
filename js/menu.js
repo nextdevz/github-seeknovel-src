@@ -4,11 +4,28 @@ $('#nav-toggle').click(function(){
 });
 
 $("#btn-notifi").click(function(){
-    onOffBtn('.notifi', ($('.notifi .detail').html().trim() != ''));
+    //onOffBtn('.notifi', ($('.notifi .detail').html().trim() != ''));
+    if($('#box-comment .box-comment').hasClass('notifi') == false) {
+        $.get(url+'?layout=notification', function(data){
+            $('#box-comment').html(data);
+        });
+    }
+    else {
+        $('#box-comment').html('');
+    }
 });
 
 $("#btn-sign-in").click(function(){
-    onOffBtn('.login', $('.register').hasClass('is-hidden'));
+    //onOffBtn('.login', $('.register').hasClass('is-hidden'));
+    var obj = $('#box-comment .box-comment');
+    if(obj.hasClass('login') == false && obj.hasClass('register') == false) {
+        $.get(url+'?layout=login', function(data){
+            $('#box-comment').html(data);
+        });
+    }
+    else {
+        $('#box-comment').html('');
+    }
 });
 
 $('.notification .delete').click(function(){
@@ -19,6 +36,13 @@ $('.notification .delete').click(function(){
         $('.num-notification, .notifi').addClass('is-hidden');
     }
 });
+
+function hideSignin() {
+    user.login = true;
+    $('#box-comment').html('');
+    $('#btn-sign-in').addClass('is-hidden');
+    $('#btn-user').removeClass('is-hidden');
+}
 
 function onOffMenu(pClass, obj, select) {
     if(select == undefined) select = obj;

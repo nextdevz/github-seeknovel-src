@@ -1,4 +1,4 @@
-<div class="register box-comment is-hidden">
+<div class="register box-comment">
     <div class="up arrow-box">
         <div class="up arrow-show"></div>
     </div>
@@ -108,3 +108,6 @@
         <div>
     </div>
 </div>
+<script>
+    <?php include_once($jsLayout.'register.js');?>
+</script>

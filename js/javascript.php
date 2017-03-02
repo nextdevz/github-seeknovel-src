@@ -6,6 +6,6 @@ var url='<?php echo $rootUrl;?>process.php';
     include_once($jsApi.'google.js');
     include_once($jsDir.'main.js');
     include_once($jsDir.'menu.js');
-    include_once($jsLayout.'login.js');
+    //include_once($jsLayout.'login.js');
     include_once($jsLayout.'register.js');
 ?>

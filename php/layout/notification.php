@@ -1,4 +1,4 @@
-<div class="notifi box-comment is-hidden">
+<div class="notifi box-comment">
     <div class="up arrow-box">
         <div class="up arrow-show"></div>
     </div>

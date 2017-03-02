@@ -1,1 +1,1 @@
-var user = {};
+var user = {accessToken:''};

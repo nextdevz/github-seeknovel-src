@@ -15,6 +15,7 @@
 	while(list($key, $value) = each($global_vars)) {
 		define($key, $value);
 	}
+	ini_set('memory_limit', '-1');
 	//ini_set('display_errors', 0);
 	//set_error_handler("sqlErrorHandler");
 

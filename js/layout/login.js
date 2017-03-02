@@ -30,9 +30,12 @@ $('#btn-login').click(function(){
 });
 
 $("#btn-register").click(function(){
-    resetSelf();
-    resetShare();
-    $('#actype').val('self');
+    //resetSelf();
+    //resetShare();
+    //$('#actype').val('self');
+    $.get(url+'?layout=register', function(data){
+        $('#box-comment').html(data);
+    });
 });
 
 $("#btn-facebook").click(function(){
@@ -52,11 +55,4 @@ function checkAccount(data){
             hideSignin();
         }
     });
-}
-
-function hideSignin() {
-    user.login = true;
-    $('.login').addClass('is-hidden');
-    $('#btn-sign-in').addClass('is-hidden');
-    $('#btn-user').removeClass('is-hidden');
 }

@@ -1,15 +1,12 @@
-var tcu;
-var tce;
-
 $('.show-pass').click(function(){
     var p = $('#password');
     var i = $('.show-pass .fa');
     if(p.attr('type') == 'text') {
         p.attr('type', 'password');
-        i.removeClass('fa-eye-slash').addClass('fa-eye');
+        i.removeClass('fa-eye').addClass('fa-eye-slash');
     } else {
         p.attr('type', 'text');
-        i.removeClass('fa-eye').addClass('fa-eye-slash');
+        i.removeClass('fa-eye-slash').addClass('fa-eye');
     }
 });
 
