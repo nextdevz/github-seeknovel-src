@@ -13,9 +13,9 @@
                 </span>
             </p>
             <p class="control has-icon has-icon-left">
-                <input id="password" name="password" class="input" type="password" placeholder="รหัสผ่าน" maxlength="20" minlength="6">
+                <input id="password" name="password" class="input" type="text" placeholder="รหัสผ่าน" maxlength="20" minlength="6">
                 <span class="icon show-pass">
-                    <i class="fa fa-eye-slash"></i>
+                    <i class="fa fa-eye"></i>
                 </span>
             </p>
         </div>

@@ -51,7 +51,7 @@ CREATE TABLE `nv_account_facebook` (
 
 DROP TABLE IF EXISTS `nv_account_google`;
 CREATE TABLE `nv_account_google` (
-  `id_account` DECIMAL(21,0) NOT NULL DEFAULT '0',
+  `id_account` DECIMAL(21,0) unsigned NOT NULL DEFAULT '0',
   `link_account` varchar(64) NOT NULL DEFAULT '',
   `id_member` mediumint(8) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`),
@@ -90,7 +90,7 @@ CREATE TABLE `nv_members` (
   `notify_news` tinyint(4) NOT NULL DEFAULT '0',
   `member_ip` varchar(255) NOT NULL DEFAULT '',
   `member_ip2` varchar(255) NOT NULL DEFAULT '',
-  `is_activated` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `is_activated` boolean NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`),
   KEY `member_name` (`member_name`),
   KEY `real_name` (`real_name`),
@@ -110,6 +110,45 @@ CREATE TABLE `nv_members` (
 
 /*!40000 ALTER TABLE `nv_members` DISABLE KEYS */;
 /*!40000 ALTER TABLE `nv_members` ENABLE KEYS */;
+
+
+
+
+--
+-- Definition of table `nv_novels`
+--
+
+DROP TABLE IF EXISTS `nv_novels`;
+CREATE TABLE `nv_novels` (
+  `id_novel` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `novel_name` varchar(100) NOT NULL DEFAULT '',
+  `taglines` varchar(250) NOT NULL DEFAULT '',
+  `front_cover` varchar(255) NOT NULL DEFAULT '',
+  `detail` text NOT NULL DEFAULT '',
+  `category` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `rating` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `tag` varchar(255) NOT NULL DEFAULT '',
+  `status` boolean NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_novel`),
+  KEY `novel_name` (`novel_name`),
+  KEY `taglines` (`taglines`),
+  KEY `category` (`category`),
+  KEY `birthdate` (`birthdate`),
+  KEY `date_register` (`date_register`),
+  KEY `last_login` (`last_login`),
+  KEY `silver_coin` (`silver_coin`),
+  KEY `gold_coin` (`gold_coin`),
+  KEY `member_ip` (`member_ip`),
+  KEY `member_ip2` (`member_ip2`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `nv_members`
+--
+
+/*!40000 ALTER TABLE `nv_members` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nv_members` ENABLE KEYS */;
+
 
 
 

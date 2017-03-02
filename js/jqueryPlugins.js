@@ -5,7 +5,7 @@ Author: Thawatchai Kaosol
 Date: 30/11/2011
 License: Copyright 2011, NextDEV, All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------- */
-$(function(){
+//$(function(){
 	$.cookie = function(n, v, e, op) {
 		n = encodeURIComponent(n);
 		if(v === undefined) {
@@ -1450,4 +1450,4 @@ $(function(){
 			return k;
 		};
 	}
-});
+//});

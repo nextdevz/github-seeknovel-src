@@ -19,13 +19,33 @@
 
     function login() {
         $sql = new c_query();
+        $result = array();
         $sql->pre_sel('*', 'nv_members', 'member_name=? OR email_address=?', array($_POST['user'], $_POST['user']));
         if($sql->num_rows() == 1 && $sql->v('passwd') == password($_POST['passwd'], $sql->v('member_name'))) {
-            $sql->json($sql->record());
+            if($sql->v('is_activated') == 0) {
+                $result = 'unactivate';
+            }
+            else {
+                $_SESSION['user'] = array(
+                    'id_member' => $sql->v('id_member'),
+                    'last_login' => $sql->v('last_login'),
+                    'silver_coin' => $sql->v('silver_coin'),
+                    'gold_coin' => $sql->v('gold_coin'),
+                    'member_ip' => $sql->v('member_ip')
+                );
+                $result = array(
+                    'member_name' => $sql->v('member_name'),
+                    'last_login' => $sql->v('last_login'),
+                    'silver_coin' => $sql->v('silver_coin'),
+                    'gold_coin' => $sql->v('gold_coin'),
+                    'member_ip' => $sql->v('member_ip')
+                );
+            }
         }
         else {
-            return 'error';
+            $result = 'error';
         }
+        echo $sql->json($result);
     }
 
     function register() {
@@ -72,6 +92,7 @@
                         $sql->begin();
                         $sql->pre_sel('id_member', 'nv_members', 'email_address=?', $_POST['email']);
                         if($sql->num_rows() == 0) {
+                            $data['is_activated'] = '1';
                             $sql->pre_ins('nv_members', $sql->data2exec($data));
                             $account['id_member'] = $sql->insert_id();
                             $account['id_account'] = $_POST['idcode'];

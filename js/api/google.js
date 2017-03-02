@@ -7,6 +7,7 @@ function startApp() {
                 fetch_basic_profile: false,
                 scope:'https://www.googleapis.com/auth/plus.login email'
             });/*.then(function (){
+                user.login=true;
                 auth2 = gapi.auth2.getAuthInstance();
                 auth2.isSignedIn.listen(updateSignIn);
                 auth2.then(updateSignIn);

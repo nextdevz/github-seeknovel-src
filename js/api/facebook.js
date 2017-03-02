@@ -90,6 +90,6 @@ window.fbAsyncInit = function() {
 function checkLogin() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-        status.login = true;
+        user.login = true;
     });
 }

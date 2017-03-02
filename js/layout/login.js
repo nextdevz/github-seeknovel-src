@@ -1,10 +1,29 @@
+$('#user').enter(function(){
+    if($('#user').val().trim() != '') {
+        $('#passwd').select();
+    }
+});
+
+$('#passwd').enter(function(){
+    if($('#user').val().trim() != '' && $('#passwd').val().trim() != '') {
+        $('#btn-login').click();
+    }
+    else if($(this).val().trim() != '') {
+        $('#user').select();
+    }
+});
+
 $('#btn-login').click(function(){
     $.send(url+'?php=member' , $('.login').serializePHP('login'), function(data){
-        if(data == 'error') {
+        if(data == 'unactivate') {
+            showMsg('ยืนยันการลงทะเบียน', 'โปรดตรวจสอบอีเมลเพื่อยืนยันการลงทะเบียน', 'is-info');
+        }
+        else if(data == 'error') {
             showMsg('คำเตือน', 'ชื่อผู้ใช้งานหรืออีเมลหรือรหัสผ่านไม่ถูกต้อง', 'is-warning');
         }
         else {
-            $.print(data);
+            user = data;
+            hideSignin();
         }
     });
 });
@@ -35,7 +54,7 @@ function checkAccount(data){
 }
 
 function hideSignin() {
-    status.login = true;
+    user.login = true;
     $('.login').addClass('is-hidden');
     $('#btn-sign-in').addClass('is-hidden');
     $('#btn-user').removeClass('is-hidden');
