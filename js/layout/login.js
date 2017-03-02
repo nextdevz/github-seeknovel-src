@@ -23,6 +23,7 @@ $('#btn-login').click(function(){
         }
         else {
             user = data;
+            $.print(user);
             hideSignin();
         }
     });

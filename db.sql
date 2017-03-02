@@ -79,6 +79,7 @@ CREATE TABLE `nv_members` (
   `member_name` varchar(80) NOT NULL DEFAULT '',
   `passwd` varchar(64) NOT NULL DEFAULT '',
   `real_name` varchar(255) NOT NULL DEFAULT '',
+  `introduce` varchar(255) NOT NULL DEFAULT '',
   `email_address` varchar(255) NOT NULL DEFAULT '',
   `birthdate` date NOT NULL DEFAULT '0001-01-01',
   `gender` tinyint(4) unsigned NOT NULL DEFAULT '0',
@@ -112,8 +113,6 @@ CREATE TABLE `nv_members` (
 /*!40000 ALTER TABLE `nv_members` ENABLE KEYS */;
 
 
-
-
 --
 -- Definition of table `nv_novels`
 --
@@ -133,21 +132,17 @@ CREATE TABLE `nv_novels` (
   KEY `novel_name` (`novel_name`),
   KEY `taglines` (`taglines`),
   KEY `category` (`category`),
-  KEY `birthdate` (`birthdate`),
-  KEY `date_register` (`date_register`),
-  KEY `last_login` (`last_login`),
-  KEY `silver_coin` (`silver_coin`),
-  KEY `gold_coin` (`gold_coin`),
-  KEY `member_ip` (`member_ip`),
-  KEY `member_ip2` (`member_ip2`)
+  KEY `rating` (`rating`),
+  KEY `tag` (`tag`),
+  KEY `status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nv_members`
 --
 
-/*!40000 ALTER TABLE `nv_members` DISABLE KEYS */;
-/*!40000 ALTER TABLE `nv_members` ENABLE KEYS */;
+/*!40000 ALTER TABLE `nv_novels` DISABLE KEYS */;
+/*!40000 ALTER TABLE `nv_novels` ENABLE KEYS */;
 
 
 

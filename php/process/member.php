@@ -18,34 +18,40 @@
     }
 
     function login() {
+        $fc = new c_function();
         $sql = new c_query();
         $result = array();
         $sql->pre_sel('*', 'nv_members', 'member_name=? OR email_address=?', array($_POST['user'], $_POST['user']));
-        if($sql->num_rows() == 1 && $sql->v('passwd') == password($_POST['passwd'], $sql->v('member_name'))) {
+        if($sql->num_rows() == 1 && $sql->v('passwd') == $fc->hash256($_POST['passwd'], 'Novel-Club-PWD')) {
             if($sql->v('is_activated') == 0) {
                 $result = 'unactivate';
             }
             else {
-                $_SESSION['user'] = array(
-                    'id_member' => $sql->v('id_member'),
-                    'last_login' => $sql->v('last_login'),
-                    'silver_coin' => $sql->v('silver_coin'),
-                    'gold_coin' => $sql->v('gold_coin'),
-                    'member_ip' => $sql->v('member_ip')
-                );
-                $result = array(
-                    'member_name' => $sql->v('member_name'),
-                    'last_login' => $sql->v('last_login'),
-                    'silver_coin' => $sql->v('silver_coin'),
-                    'gold_coin' => $sql->v('gold_coin'),
-                    'member_ip' => $sql->v('member_ip')
-                );
+                $result = login_data($sql->record(), $fc);
             }
         }
         else {
             $result = 'error';
         }
         echo $sql->json($result);
+    }
+
+    function login_data($data, $fc) {
+        $token = array(
+            'id_member' => $data['id_member'],
+            'exp' => time() + 3600
+        );
+        $gender = array('male', 'female', 'other');
+        return array(
+            'accessToken' => $fc->token_set($token, 'Novel-Club-User'),
+            'real_name' => $data['real_name'],
+            'introduce' => $data['introduce'],
+            'email_address' => $data['email_address'],
+            'birthdate' => $data['birthdate'],
+            'gender' => $gender[$data['gender']],
+            'silver_coin' => $data['silver_coin'],
+            'gold_coin' => $data['gold_coin'],
+        );
     }
 
     function register() {
@@ -66,7 +72,7 @@
             );
             if($_POST['actype'] == 'self') {
                 $data['member_name'] = $_POST['username'];
-                $data['passwd'] = password($_POST['password'], $_POST['username']);
+                $data['passwd'] = $fc->hash256($_POST['password'], 'Novel-Club-PWD');
                 $sql->pre_sel('member_name, email_address', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
                 $num = $sql->num_rows();
                 if($num == 0) {
@@ -98,6 +104,10 @@
                             $account['id_account'] = $_POST['idcode'];
                             $account['link_account'] = $_POST['link'];
                             $sql->pre_ins('nv_account_'.$_POST['actype'], $sql->data2exec($account));
+                            $data['id_member'] = $account['id_member'];
+                            $data['introduce'] = '';
+                            $data['silver_coin'] = $data['gold_coin'] = 0;
+                            $result = login_data($data, $fc);
                         }
                         else {
                             $result = 'duplicate email';

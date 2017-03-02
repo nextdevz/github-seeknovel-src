@@ -1,1 +1,1 @@
-var status = {login:false};
+var user = {};

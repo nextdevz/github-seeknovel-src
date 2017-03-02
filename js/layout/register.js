@@ -64,12 +64,13 @@ $('#btn-regis').click(function() {
     if(error === '') {
         $.send(url+'?php=member' , $('.register').serializePHP('register'), function(data){
             var actype = $('#actype').val();
-            if(data == 'susceed') {
+            if(data == 'susceed' || data['accessToken'] != undefined) {
                 $('.register').addClass('is-hidden');
                 if(actype == 'self') {
                     showMsg('ยืนยันการลงทะเบียน', 'ลงทะเบียนเรียบร้อยแล้วกรุณาตรวจสอบอีเมลเพื่อยืนยันการใช้งาน', 'is-success', 270);
                 }
                 else {
+                    $.print(data);
                     hideSignin();
                 }
             }
