@@ -29,9 +29,7 @@ $('.register input[id!="birthday"], button').focusin(function(){
 $('#btn-regis').click(function() {
     var error = '';
     var cng = 0;
-    var slt = '.register ';
-    slt += ($(slt+'.self').hasClass('is-hidden') === false ? '.self' : '.other');
-    $(slt+' input, .register .share input').each(function(i, v){
+    $('.register input').each(function(i, v){
         var min = $(this).attr('minlength');
         var rx = $(this).attr('regexp');
         var val = $(this).val().trim();
@@ -67,8 +65,7 @@ $('#btn-regis').click(function() {
                     showMsg('ยืนยันการลงทะเบียน', 'ลงทะเบียนเรียบร้อยแล้วกรุณาตรวจสอบอีเมลเพื่อยืนยันการใช้งาน', 'is-success', 270);
                 }
                 else {
-                    $.print(data);
-                    hideSignin();
+                    hideSignin(data);
                 }
             }
             else if(data == 'error'){
@@ -90,8 +87,11 @@ $('#btn-regis').click(function() {
         showMsg('คำเตือน', error, 'is-warning', 320);
     }
 });
+if(user.hash != undefined) {
+    $('.register').dataToObject(user);
+}
 
-function resetSelf() {
+/*function resetSelf() {
     var regis = ".register ";
     $(regis+'.self').removeClass('is-hidden');
     $(regis+'.other').addClass('is-hidden');
@@ -127,4 +127,4 @@ function dataRegis(data){
     if(data != undefined) {
         $('.register').dataToObject(data);
     }
-}
+}*/

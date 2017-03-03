@@ -82,7 +82,7 @@ CREATE TABLE `nv_members` (
   `introduce` varchar(255) NOT NULL DEFAULT '',
   `email_address` varchar(255) NOT NULL DEFAULT '',
   `birthdate` date NOT NULL DEFAULT '0001-01-01',
-  `gender` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `gender` tinyint(4) unsigned NOT NULL DEFAULT '1',
   `date_register` int(10) unsigned NOT NULL DEFAULT '0',
   `last_login` int(10) unsigned NOT NULL DEFAULT '0',
   `silver_coin` int(10) unsigned NOT NULL DEFAULT '0',
@@ -91,6 +91,7 @@ CREATE TABLE `nv_members` (
   `notify_news` tinyint(4) NOT NULL DEFAULT '0',
   `member_ip` varchar(255) NOT NULL DEFAULT '',
   `member_ip2` varchar(255) NOT NULL DEFAULT '',
+  `authorize` tinyint(4) unsigned NOT NULL DEFAULT '3',
   `is_activated` boolean NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_member`),
   KEY `member_name` (`member_name`),
@@ -127,14 +128,18 @@ CREATE TABLE `nv_novels` (
   `category` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `rating` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `tag` varchar(255) NOT NULL DEFAULT '',
-  `status` boolean NOT NULL DEFAULT '0',
+  `id_member` mediumint(8) unsigned NOT NULL,
+  `public` boolean NOT NULL DEFAULT '0',
+  `delete` boolean NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_novel`),
   KEY `novel_name` (`novel_name`),
   KEY `taglines` (`taglines`),
   KEY `category` (`category`),
   KEY `rating` (`rating`),
   KEY `tag` (`tag`),
-  KEY `status` (`status`)
+  KEY `id_member` (`id_member`),
+  KEY `public` (`public`),
+  KEY `delete` (`delete`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

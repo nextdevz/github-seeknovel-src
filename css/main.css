@@ -28,7 +28,7 @@ body.day .body.container {
 body.day .text-line span {
 	background: #f3f3f3;
 }
-body.day .box-comment .detail{
+body.day .menu-popup .detail{
 	background-color: #f3f3f3;
 }
 @media screen and (max-width: 768px) {
@@ -195,7 +195,7 @@ p.nav-item {
 	cursor: pointer;
 }
 /*----------------------------------------------------------------------------------------------------------------------------*/
-.notifi.box-comment .arrow-box{
+.notifi.menu-popup .arrow-box{
 	right: 51px;
 }
 .notifi .notification.is-info {
@@ -205,14 +205,14 @@ p.nav-item {
 .notifi .notification:not(:last-child) {
     margin-bottom: 0.5rem;
 }
-.notifi.box-comment .detail{
+.notifi.menu-popup .detail{
 	padding: 4px;
 }
 .login .detail, .register .detail{
 	padding: 20px 20px 10px 20px;
 	text-align: center;
 }
-.box-comment {
+.menu-popup {
 	position: absolute;
 	top: 50px;
 	right: 0px;
@@ -220,53 +220,53 @@ p.nav-item {
 	z-index: 90;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
 }
-.box-comment div.self, .box-comment div.other {
+.menu-popup div.self, .menu-popup div.other {
 	margin-bottom: 0.75rem;
 }
 @media screen and (min-width: 769px) {
-	.box-comment .detail{
+	.menu-popup .detail{
 		width: 284px;
 		border: 2px solid #999;
 		border-radius: 6px;
 	}
 }
 @media screen and (max-width: 768px) {
-	.box-comment{
+	.menu-popup{
   	  width: 100%;
     }
 }
-.box-comment .head {
+.menu-popup .head {
     font-size: 1.3rem;
 	font-weight: bold;
 }
-.box-comment .center {
+.menu-popup .center {
     text-align: center;
 }
-.box-comment .button{
+.menu-popup .button{
    	width: 100%;
 	margin-bottom: 0.75rem;
 }
-.box-comment a{
+.menu-popup a{
    	color:#363e3e;
 }
-.box-comment a:hover{
+.menu-popup a:hover{
    	color:#707b7b;
 }
 @media screen and (min-width: 769px) {
-	.box-comment .arrow-box{
+	.menu-popup .arrow-box{
 		right: 11px;
 	}
-	.box-comment .arrow-box{
+	.menu-popup .arrow-box{
 		content: "";
 		width: 24px;
 		height: 12px;
 		position:absolute;
 		overflow: hidden;
 	}
-	.box-comment .arrow-box.up{
+	.menu-popup .arrow-box.up{
 		top: -10px;
 	}
-	.box-comment .arrow-show{
+	.menu-popup .arrow-show{
 		content: "";
 		position: relative;
 		width: 18px;
@@ -279,7 +279,7 @@ p.nav-item {
 		transform: rotate(45deg);
 		border: 2px solid #999;
 	}
-	.box-comment .arrow-show{
+	.menu-popup .arrow-show{
 		background-color: #f3f3f3;
 	}
 	.div-show-tooltip .arrow-show.up{

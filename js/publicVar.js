@@ -1,1 +1,2 @@
-var user = {accessToken:''};
+var user = {};
+var layout = {login:''};

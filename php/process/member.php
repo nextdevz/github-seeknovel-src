@@ -4,17 +4,21 @@
 
     function account($php=false) {
         $sql = new c_query();
-        $sql->pre_sel('id_account', 'nv_account_'.$_POST['actype'], 'id_account=?', $_POST['idcode']);
+        $sql->pre_sel('id_member', 'nv_account_'.$_POST['actype'], 'id_account=?', $_POST['idcode']);
         if($php === false) {
-            $sql->json($sql->num_rows());
+            if($sql->num_rows() == 0) {
+                $result = 0;
+            }
+            else {
+                $sql->pre_sel('*', 'nv_members', 'id_member=?', $sql->v('id_member'));
+                $fc = new c_function();
+                $result = login_data($sql->record(), $fc);
+            }
+            $sql->json($result);
         }
         else {
             return $sql->num_rows();
         }
-    }
-
-    function password($pass, $key) {
-        return hash_hmac('sha256', $pass, $key.'@ND-PWD');
     }
 
     function login() {
@@ -33,17 +37,20 @@
         else {
             $result = 'error';
         }
-        echo $sql->json($result);
+        $sql->json($result);
     }
 
     function login_data($data, $fc) {
+        $exp = time() + CK_TIME;
         $token = array(
             'id_member' => $data['id_member'],
-            'exp' => time() + 3600
+            'exp' => $exp
         );
-        $gender = array('male', 'female', 'other');
+        $token = $fc->token_set($token, 'Novel-Club-User');
+        $gender = array('1'=>'male', '2'=>'female', '3'=>'other');
+        setcookie('accessToken', $token, $exp);
         return array(
-            'accessToken' => $fc->token_set($token, 'Novel-Club-User'),
+            'accessToken' => $token,
             'real_name' => $data['real_name'],
             'introduce' => $data['introduce'],
             'email_address' => $data['email_address'],
@@ -59,7 +66,7 @@
         $sql = new c_query();
         $result = 'susceed';
         $date = explode('/', $_POST['birthday']);
-        if(checkdate($date['1'], $date['0'], $date['2']) === true && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && preg_match('/^[0-2]{1}$/', $_POST['gender'])) {
+        if(checkdate($date['1'], $date['0'], $date['2']) === true && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && preg_match('/^[1-3]{1}$/', $_POST['gender'])) {
             $ip = $fc->get_real_ip(true);
             $data = array(
                 'real_name' => $_POST['realname'],
@@ -125,6 +132,6 @@
         else {
             $result = 'error';
         }
-        echo $sql->json($result);
+        $sql->json($result);
     }
 ?>

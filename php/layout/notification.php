@@ -1,4 +1,4 @@
-<div class="notifi box-comment">
+<div class="notifi menu-popup">
     <div class="up arrow-box">
         <div class="up arrow-show"></div>
     </div>
@@ -17,3 +17,6 @@
         </div>
     </div>
 </div>
+<script>
+    <?php include_once($jsLayout.'notification.js');?>
+</script>

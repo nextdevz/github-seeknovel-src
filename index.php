@@ -42,13 +42,13 @@
                             </span>
                         </p>
                         <?php
-                            echo showIcon('list', '', 'หมวดนิยาย', '', 'is-hidden-mobile')
-                            .showIcon('pencil', '', 'เขียนนิยาย', '', 'is-hidden-mobile')
-                            .showIcon('tags', '', 'ที่คั่นนิยาย', '', 'is-hidden-mobile');
+                            echo showIcon('list', 'category', 'หมวดนิยาย', '', 'is-hidden-mobile')
+                            .showIcon('pencil', 'write', 'เขียนนิยาย', 'is-hidden', 'is-hidden-mobile')
+                            .showIcon('tags', 'tags', 'ที่คั่นนิยาย', 'is-hidden', 'is-hidden-mobile');
                         ?>
                     </div>
                     <?php
-                        echo showIcon('comment', 'notifi', '<span class="num-notification">2</span>')
+                        echo showIcon('comment', 'notifi', '<span class="num-notification">2</span>', 'is-hidden')
                         .showIcon('user', 'user', '', 'is-hidden')
                         .showIcon('sign-in', 'sign-in');
                     ?>
@@ -57,11 +57,7 @@
                         <span></span>
                         <span></span>
                     </span>
-                    <div id="box-comment">
-                        <?php //include_once($phpLayout.'notification.php');?>
-                        <?php //include_once($phpLayout.'login.php');?>
-                        <?php //include_once($phpLayout.'register.php');?>
-                    </div>
+                    <div id="menu-popup"></div>
                 </nav>
             </div>
         </div>

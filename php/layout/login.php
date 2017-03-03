@@ -1,4 +1,4 @@
-<div class="login box-comment">
+<div class="login menu-popup">
     <div class="up arrow-box">
         <div class="up arrow-show"></div>
     </div>

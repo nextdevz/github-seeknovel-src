@@ -2,7 +2,7 @@ $('#user').enter(function(){
     if($('#user').val().trim() != '') {
         $('#passwd').select();
     }
-});
+}).select();
 
 $('#passwd').enter(function(){
     if($('#user').val().trim() != '' && $('#passwd').val().trim() != '') {
@@ -22,9 +22,7 @@ $('#btn-login').click(function(){
             showMsg('คำเตือน', 'ชื่อผู้ใช้งานหรืออีเมลหรือรหัสผ่านไม่ถูกต้อง', 'is-warning');
         }
         else {
-            user = data;
-            $.print(user);
-            hideSignin();
+            hideSignin(data);
         }
     });
 });
@@ -33,8 +31,9 @@ $("#btn-register").click(function(){
     //resetSelf();
     //resetShare();
     //$('#actype').val('self');
-    $.get(url+'?layout=register', function(data){
-        $('#box-comment').html(data);
+    user = {};
+    $.get(url+'?layout=register&actype=self', function(data){
+        $('#menu-popup').html(data);
     });
 });
 
@@ -47,12 +46,16 @@ $('#btn-google').click(function(){
 });
 
 function checkAccount(data){
+    user = data;
     $.send(url+'?php=member', 'process=account&idcode='+data.idcode+'&actype='+data.actype, function(d){
         if(d == 0) {
-            dataRegis(data);
+            $.get(url+'?layout=register&actype='+data.actype, function(data){
+                $('#menu-popup').html(data);
+            });
         }
         else {
-            hideSignin();
+            hideSignin(d);
         }
     });
 }
+

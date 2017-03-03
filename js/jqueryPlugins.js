@@ -21,7 +21,12 @@ License: Copyright 2011, NextDEV, All Rights Reserved.
 				}
 				reselt[x] = y;
 			}
-			return reselt;
+			if(n == 'undefined') {
+				return reselt;
+			}
+			else {
+				return '';
+			}
 		}
 		else {
 			var op = $.extend({path:'', domain:'', secure:''}, op);

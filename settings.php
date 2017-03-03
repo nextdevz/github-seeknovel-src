@@ -3,7 +3,7 @@
 	//$webName = 'nextdev.noip.me/seeknovel/src/';
 	//$root = 'http://'.$webName;
 	$root = '';
-	$title = 'Novel Club';
+	$title = 'Seek Novel';
 	$subtitle = ' เว็บไซต์สำหรับคนรักนิยาย';
 	$fulltitle = $title.' '.$subtitle;
 	$global_vars = array (
@@ -11,6 +11,7 @@
 		"DB_NAME"	=>	"novel",
 		"DB_USER"	=>	"root",
 		"DB_PWD"	=>	"",
+		"CK_TIME" 	=>	7 * 24 * 3600,
 	);
 	while(list($key, $value) = each($global_vars)) {
 		define($key, $value);

@@ -29,7 +29,7 @@ function facebookLogin(callback) {
                     realname:res.name,
                     email:res.email,
                     birthday:date['1']+'/'+date['0']+'/'+date['2'],
-                    gender:(res.gender == 'male' ? 0 : 1),
+                    gender:(res.gender == 'male' ? 1 : 2),
                     hash:CryptoJS.HmacSHA256(res.id, res.link).toString()
                 };
                 callback.call(this, data);
