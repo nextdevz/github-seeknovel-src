@@ -1,2 +1,9 @@
 var user = {};
-var layout = {login:''};
+var layout = {
+    login:'',
+    regis:{
+        self:'',
+        facebook:'',
+        google:''
+    }
+};

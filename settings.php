@@ -3,7 +3,7 @@
 	//$webName = 'nextdev.noip.me/seeknovel/src/';
 	//$root = 'http://'.$webName;
 	$root = '';
-	$title = 'Seek Novel';
+	$title = 'Kuma Baka';
 	$subtitle = ' เว็บไซต์สำหรับคนรักนิยาย';
 	$fulltitle = $title.' '.$subtitle;
 	$global_vars = array (

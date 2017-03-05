@@ -62,12 +62,58 @@
             </div>
         </div>
         <div class="body container day">
-            <div id="status"></div>
+            <div class="list">
             <?php
-                for($i=0; $i < 200; $i++) {
-                    echo $i.'<br>';
+                /*for($i=0; $i < 12; $i++) {
+                    if($i > 0 && $i % 4 == 0 ) {
+                        echo '</div><div class="columns is-mobile">';
+                    }
+                    echo '<div class="card column">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image" style="height: 40px; width: 40px;">
+                                        <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">ชื่อนิยาย</p>
+                                    <p class="subtitle is-6">ผู้แต่ง</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                เนื้อหา, เรื่องย่อ, รายละเอียดหนังสือ
+                                <br>
+                                <small>11:09 PM - 1 Jan 2016</small>
+                            </div>
+                        </div>
+                    </div>';
+                }
+                echo '</div>';*/
+                for($i=0; $i < 12; $i++) {
+                    echo '<div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                ชื่อนิยาย
+                                <br>
+                                ผู้แต่ง
+                                <small>11:09 PM - 1 Jan 2016</small>
+                            </div>
+                        </div>
+                    </div>';
                 }
             ?>
+            </div>
         </div>
         <div class="box-message is-hidden">
             <div class="box-message-v">

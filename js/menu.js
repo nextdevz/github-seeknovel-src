@@ -65,6 +65,13 @@ function onOffMenu(pClass, obj, select) {
         $(select).addClass(pClass);
     }
 }
+
+/*$.get(url+'?layout=login', function(data){
+    layout.login = data;
+});
+$.get(url+'?layout=register&actype=self', function(data){
+    $('#menu-popup').html(data);
+});*/
 /*function onOffBtn(pClass, val) {
     $('#nav-toggle, #nav-menu').removeClass('is-active');
     if($(pClass).hasClass('is-hidden') === true && val === true) {

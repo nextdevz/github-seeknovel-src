@@ -38,6 +38,7 @@ body.day .menu-popup .detail{
 }
 .body {
 	margin-top: 50px;
+	padding: 0.75rem;
 }
 .body.container {
 	border: 1px solid #868e8e;
@@ -303,7 +304,7 @@ p.nav-item {
 .text-line span {
 	padding: 0 10px;
 }
-/*----------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------box-message---------------------------------------------------------------------*/
 .box-message {
 	position: fixed;
 	display: table;
@@ -336,3 +337,23 @@ p.nav-item {
 .delete {
     font-size: 0.7rem;
 }
+/*------------------------------------------------------Card---------------------------------------------------------------------------*/
+.list {
+	text-align: center;
+}
+.card {
+	margin: 0.75rem;
+	display: inline-block;
+	min-width: 200px;
+}
+.card-content {
+    padding: 1rem;
+}
+/*.columns {
+	margin-left: 0rem;
+    margin-right: 0rem;
+    margin-top: 0rem;
+}*/
+
+
+
