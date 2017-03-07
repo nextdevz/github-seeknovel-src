@@ -2,7 +2,7 @@ $('#user').enter(function(){
     if($('#user').val().trim() != '') {
         $('#passwd').select();
     }
-}).select();
+});
 
 $('#passwd').enter(function(){
     if($('#user').val().trim() != '' && $('#passwd').val().trim() != '') {

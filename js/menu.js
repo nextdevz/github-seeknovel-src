@@ -1,17 +1,9 @@
+$("#btn-category").click(function(){
+    $('.modal').addClass('is-active');
+});
+
 $("#btn-write").click(function(){
-    if($('#menu-popup .menu-popup').hasClass('notifi') == false) {
-        if(layout.login =='') {
-            $.get(url+'?layout=login', function(data){
-                $('#menu-popup').html(layout.login = data);
-            });
-        }
-        else {
-            $('#menu-popup').html(layout.login);
-        }
-    }
-    else {
-        $('#menu-popup').html('');
-    }
+    $('.modal').show();
 });
 
 $("#btn-notifi").click(function(){
