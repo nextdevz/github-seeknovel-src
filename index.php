@@ -63,18 +63,29 @@
         </div>
         <div class="body container day">
             <?php
+            $img = array(
+                'https://www.w3schools.com/css/rock600x400.jpg',
+                'https://www.w3schools.com/css/lights600x400.jpg',
+                'https://www.w3schools.com/css/img_forest.jpg',
+                'https://www.w3schools.com/css/img_mountains.jpg',
+                'https://www.w3schools.com/css/paris.jpg'
+            );
             for($r=0; $r < 5; $r++) {
-                echo '<div class="list">';
+                echo '<div>หมวดหมู่'.$r.'</div><div class="list">';
                 for($i=0; $i < 5; $i++) {
                     echo '<div class="card">
                         <div class="card-image">
                             <figure class="image is-3by4">
-                                <img src="http://bulma.io/images/placeholders/480x480.png" alt="Image">
+                                <img src="'.$img[$i].'" alt="Image">
                             </figure>
+                            <a class="view"><span class="icon"><i class="fa fa-eye"></i></span><span class="count">123</span></a>
+                            <a class="comment"><span class="icon"><i class="fa fa-comment"></i></span><span class="count">123</span></a>
                         </div>
                         <div class="card-content">
                             <div class="content">
-                                ชื่อนิยาย'.$i.'
+                                <b>
+                                    ชื่อนิยาย'.$i.'
+                                </b>
                                 <br>
                                 ผู้แต่ง
                                 <small>11:09 PM - 1 Jan 2016</small>
