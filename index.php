@@ -62,6 +62,13 @@
             </div>
         </div>
         <div class="body container day">
+            <div class="tabs is-centered">
+                <ul>
+                    <li class="is-active"><a>สำหรับคุณ</a></li>
+                    <li><a>นิยายแนะนำ</a></li>
+                    <li><a>อัพเดทนิยาย</a></li>
+                </ul>
+            </div>
             <?php
             $img = array(
                 'https://www.w3schools.com/css/rock600x400.jpg',
@@ -72,8 +79,8 @@
             );
             for($r=0; $r < 5; $r++) {
                 echo '<div>หมวดหมู่'.$r.'</div><div class="list">';
-                for($i=0; $i < 5; $i++) {
-                    echo '<div class="card">
+                for($i=0; $i < 4; $i++) {
+                    /*echo '<div class="card">
                         <div class="card-image">
                             <figure class="image is-3by4">
                                 <img src="'.$img[$i].'" alt="Image">
@@ -91,7 +98,48 @@
                                 <small>11:09 PM - 1 Jan 2016</small>
                             </div>
                         </div>
-                    </div>';
+                    </div>';*/
+                    /*echo '<div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-90x120">
+                                    <img src="'.$img[$i].'" alt="Image">
+                                </figure>
+                                <nav class="level">
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fa fa-share-alt"></i></span>
+                                        </a>
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                                        </a>
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fa fa-tag"></i></span>
+                                        </a>
+                                </nav>
+                                <nav class="level">
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fa fa-eye"></i><span class="count">123</span></span>
+                                        </a>
+                                        <a class="level-item">
+                                            <span class="icon is-small"><i class="fa fa-comment"></i><span class="count">123</span></span>
+                                        </a>
+                                </nav>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <strong>ชื่อนิยาย: </strong>John Smith'.$i.'
+                                    </p>
+                                    <p>
+                                        <strong>ผู้แต่ง: </strong>@johnsmith
+                                    </p>
+                                    <p>
+                                        <strong>เรื่องย่อ: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>';*/
                 }
                 echo '</div>';
             }
