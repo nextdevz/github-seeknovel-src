@@ -349,28 +349,107 @@ p.nav-item {
 .list {
 	text-align: center;
 	display: flex;
+	justify-content: center;
+}
+.tabs.has-shadow {
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+}
+.tab-body {
+	padding: 0px 5px;
+}
+.tab-body hr {
+    margin: 0.4rem 0;
+}
+.tab-body .label {
+    padding: 0px 10px;
+}
+.tab-body .label:not(:first-child) {
+    margin-top: 1.75rem;
+}
+.random {
+	padding: 0rem 1rem;
+}
+.random .image:not(:last-child) {
+	margin-right: 2px;
+}
+.tab-body .table {
+	margin: 0rem;
+	padding: 0px 10px 0px 10px;
+	background-color: transparent;
+	border-collapse:inherit;
+	font-size: 0.9rem;
+}
+.table td, .table th {
+    padding: 0.4em 0.4em;
 }
 /*------------------------------------------------------box---------------------------------------------------------------------------*/
 .box {
 	margin: 0.75rem !important;
 	padding: 0.75rem;
 }
-.box nav {
-	margin-top: 8px;
+.box nav.level {
+	margin: 5px 0px 0px 0px;
 }
-.box .content {
+.box nav {
+	display: flex;
+}
+.box .level-item {
+	margin: 0px;
+}
+.box .media-left .level-item {
+	flex-grow: 1;
+}
+.media-content .level-item {
+}
+.box nav a {
+	color: #8a8a8a;
+	font-size: 11px;
+}
+.box nav a:hover {
+	color: #4a4a4a;
+}
+.box .detail {
+	height: 123px;
 	overflow: hidden;
 }
 .box .content p {
 	margin-bottom: 0px;
-	font-size: 0.85rem;
+	font-size: 0.80rem;
 }
 .image.is-90x120 {
     height: 120px;
     width: 90px;
 }
+.image.is-h150 {
+    height: 190px;
+    width: 100%;
+}
 .image img {
     height: 100%;
+}
+@media screen and (min-width: 769px) and (max-width: 1191px) {
+	.box:nth-of-type(4), .random figure:nth-of-type(n+4){
+		display: none;
+    }
+	.tab-body .table td:nth-of-type(n+5){
+		display: none;
+	}
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	.box, .random figure {
+		flex-basis: 45%;
+    }
+	.list {
+		flex-flow: row wrap;
+	}
+	.tab-body .table td:nth-of-type(n+4), .random figure:nth-of-type(n+3){
+		display: none;
+	}
+}
+@media screen and (max-width: 480px) {
+	.box:nth-of-type(4), .tab-body .table td:nth-of-type(n+3), .random figure:nth-of-type(n+2){
+		display: none;
+	}
 }
 
 
