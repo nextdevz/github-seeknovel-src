@@ -62,21 +62,29 @@
             </div>
         </div>
         <div class="body container day">
-            <div class="list random">
-                <?php
-                $img = array(
-                    'https://www.w3schools.com/css/rock600x400.jpg',
-                    'https://www.w3schools.com/css/lights600x400.jpg',
-                    'https://www.w3schools.com/css/img_forest.jpg',
-                    'https://www.w3schools.com/css/img_mountains.jpg',
-                    'https://www.w3schools.com/css/paris.jpg'
-                );
-                for($i=0; $i < 4; $i++) {
-                    echo '<figure class="image is-h150">
-                        <img src="'.$img[$i].'">
-                    </figure>';
-                }
-                ?>
+            <div>
+                <div class="list cover-random">
+                    <?php
+                        $num_random = 8;
+                        for($i=0; $i < $num_random; $i++) {
+                            echo '<figure class="image is-h150">
+                                <img src="'.$imgDir.'/blank-cover.jpg">
+                            </figure>';
+                        }
+                    ?>
+                </div>
+                <div class="list control-left">
+                    <span class="icon is-hidden-mobile">
+                        <i class="fa fa-angle-left"></i>
+                    </span>
+                </div>
+                <div class="list control-random">
+                    <?php
+                        for($i=0; $i < $num_random; $i++) {
+                            echo '<span></span>';
+                        }
+                    ?>
+                </div>
             </div>
             <div class="tabs is-centered has-shadow">
                 <ul>
@@ -87,23 +95,23 @@
             </div>
             <div class="tab-body">
             <?php
-                $label = array(
-                    'อัปเดทล่าสุด',
-                    'ท็อปนิยายแต่ง',
-                    'ท็อปนิยายแปล',
-                    'ท็อปนักแต่ง',
-                    'นิยายมาใหม่'
+                $page = array(
+                    array('label'=>'อัปเดทล่าสุด', 'page'=>''),
+                    array('label'=>'ท็อปนิยายแต่ง', 'page'=>''),
+                    array('label'=>'ท็อปนิยายแปล', 'page'=>''),
+                    array('label'=>'ท็อปนิยายแต่ละหมวด', 'page'=>''),
+                    array('label'=>'นิยายมาใหม่', 'page'=>'new_novel.php')
                 );
-                for($r=0; $r < count($label); $r++) {
-                    echo '<div class="label">'.$label[$r].'<hr></div>
-                    <div class="list">';
+                for($r=0; $r < count($page); $r++) {
+                    echo '<div class="label">'.$page[$r]['label'].'<hr></div>';
                     if($r < 4) {
-                        for($i=0; $i < 4; $i++) {
+                        echo '<div class="list cover-card">';
+                        for($i=0; $i < 8; $i++) {
                             echo '<div class="box">
                                 <article class="media">
                                     <div class="media-left">
                                         <figure class="image is-90x120">
-                                            <img src="'.$img[$i].'" alt="Image">
+                                            <img src="'.$imgDir.'/blank-cover.jpg" alt="Image">
                                         </figure>
                                         <nav class="level">
                                             <a class="level-item">
@@ -148,20 +156,7 @@
                         echo '</div>';
                     }
                     else {
-                        echo '<table class="table">
-                        <tbody>';
-                        for($i=1; $i<11; $i++) {
-                            echo '<tr>
-                                <th>'.$i.'</th>
-                                <td class="name">ชื่อนิยาย:</td>
-                                <td class="writer">ผู้แต่ง:</td>
-                                <td class="episode">จำนวนตอน</td>
-                                <td class="view">จำนวนวิว</td>
-                                <td class="view">จำนวนคอมเม้นท์</td>
-                            </tr>';
-                            }
-                        echo '</tbody>
-                        </table>';
+                        include_once($phpLayout.$page[$r]['page']);
                     }
                 }
             ?>
