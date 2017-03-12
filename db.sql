@@ -70,6 +70,46 @@ CREATE TABLE `nv_account_google` (
 
 
 --
+-- Definition of table `nv_category`
+--
+
+DROP TABLE IF EXISTS `nv_category`;
+CREATE TABLE `nv_category` (
+  `id_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_category`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `nv_category`
+--
+
+/*!40000 ALTER TABLE `nv_category` DISABLE KEYS */;
+INSERT INTO `nv_category` (`id_category`,`category_name`) VALUES 
+ (1,'ฟรีสไตล์'),
+ (2,'รัก, โรแมนติก'),
+ (3,'ซึ้งกินใจ'),
+ (4,'ชีวิต, ดราม่า'),
+ (5,'ตลก, คอมเมดี้'),
+ (6,'นิยายวาย'),
+ (7,'แฟนตาซี'),
+ (8,'เกมออนไลน์'),
+ (9,'วิทยาศาสตร์'),
+ (10,'ระทึกขวัญ, สยองขวัญ'),
+ (11,'อาชญากรรม, สืบสวน'),
+ (12,'กำลังภายใน'),
+ (13,'สงคราม'),
+ (14,'ผจญภัย'),
+ (15,'ท่องเวลา'),
+ (16,'ย้อนยุค'),
+ (17,'สารคดี'),
+ (18,'บู๊, แอ๊คชั่น'),
+ (19,'อีโรติก'),
+ (20,'แฟนฟิค');
+/*!40000 ALTER TABLE `nv_category` ENABLE KEYS */;
+
+
+--
 -- Definition of table `nv_members`
 --
 
@@ -125,7 +165,7 @@ CREATE TABLE `nv_novels` (
   `taglines` varchar(250) NOT NULL DEFAULT '',
   `front_cover` varchar(255) NOT NULL DEFAULT '',
   `detail` text NOT NULL DEFAULT '',
-  `category` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `id_category` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `rating` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `tag` varchar(255) NOT NULL DEFAULT '',
   `id_member` mediumint(8) unsigned NOT NULL,

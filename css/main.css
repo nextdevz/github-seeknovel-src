@@ -6,12 +6,15 @@ html {
 	width: 100%;
 	top: 0px;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
+	background-image: linear-gradient(141deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
 }
 .menu, .nav {
 	height: 50px;
-	/*background: #363e3e none repeat scroll 0 0;*/
-	background: #6b4739 none repeat scroll 0 0;
+	/*background: #6b4739 none repeat scroll 0 0;*/
 	z-index: 2;
+}
+.nav {
+	background-color: transparent;
 }
 body.day {
 	background-attachment: fixed;
@@ -118,11 +121,11 @@ body.day .nav a.nav-item:hover {
 	   	color: #363e3e;
 	}
 	body.day .nav-item .is-hidden-tablet-only:hover {
-	   color: #565e5e;
+	   color: #6b4739;
 	}
 }
 .nav-toggle:hover{
-	background-color: #565e5e;
+	background-color: #6b4739;
 }
 .nav-toggle span {
     height: 3px;
@@ -345,6 +348,13 @@ p.nav-item {
     font-size: 0.7rem;
 }
 /*------------------------------------------------------tab---------------------------------------------------------------------------*/
+.tabs.container {
+	background-color: #f2ede6;
+	position: fixed;
+	top: 50px;
+	width: 100%;
+	z-index: 2;
+}
 .tabs li.is-active a {
     color: #5b3729;
 	border-bottom-color: #6b4739;
@@ -371,21 +381,12 @@ p.nav-item {
     padding: 0px 10px;
 }
 .tab-body .label:not(:first-child) {
-    margin-top: 1.75rem;
+    margin-top: 1.5rem;
 }
-.random {
-	padding: 0rem 1rem;
-}
-.random .image:not(:last-child) {
-	margin-right: 2px;
+.tab-body .list {
+	margin-bottom: 1.25rem;
 }
 /*------------------------------------------------------box---------------------------------------------------------------------------*/
-.list.cover-random {
-	margin: 0.75rem 0.75rem 0rem 0.75rem;
-	height: 193px;
-	flex-wrap: wrap;
-	overflow: hidden;
-}
 .list .box, .list figure {
 	flex-grow: 1;
 }
@@ -431,7 +432,8 @@ p.nav-item {
 }
 .list .image.is-h150 {
     height: 190px;
-    width: 100%;
+    /*width: 100%;*/
+	width: 33%;
 }
 .list .image img {
 	border: 1px solid #bb9789;
@@ -443,28 +445,43 @@ p.nav-item {
 	top: 25px;
 	left: 0px;
 }
+.list.cover-random {
+	margin: 0.75rem 0.75rem 0rem 0.75rem;
+	flex-wrap: nowrap;
+	height: 193px;
+	overflow: hidden;
+	/*flex-wrap: wrap;
+	overflow: hidden;*/
+}
 .list.cover-random figure {
-	flex-basis: 23%;
+	/*flex-basis: 50%;
+	flex-basis: 23%;*/
+	display: inline-block;
 	margin: 1px;
 }
-.list.control-random span{
+.list.control-random span.dot{
 	background: rgba(107, 71, 57, 0.6) none repeat scroll 0 0;
 	border-radius: 30px;
 	cursor: pointer;
 	display: block;
 	height: 9px;
-	margin: 7px 9px;
+	margin: 9px 9px;
 	transition: opacity 0.2s ease 0s;
 	width: 9px;
 }
-.list.control-random span:hover{
+.list.control-random span.dot:hover{
 	background: rgb(107, 71, 57);
+}
+.list.control-random span.icon{
+	color: #9b7769;
+	cursor: pointer;
+	margin: 7px 9px;
+}
+.list.control-random span.icon:hover{
+	color: #6b4739;
 }
 .list.cover-card .box {
 	flex-basis: 23%;
-}
-.list.control-random span:nth-of-type(n+5){
-	display: none;
 }
 @media screen and (max-width: 1191px) {
 	.list.cover-card .box{

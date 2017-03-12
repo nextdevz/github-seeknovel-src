@@ -20,7 +20,12 @@
 	//ini_set('display_errors', 0);
 	//set_error_handler("sqlErrorHandler");
 
-	$rootUrl = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+	if(isset($_SERVER['HTTP_REFERER'])) {
+		$rootUrl = $_SERVER['HTTP_REFERER'];
+	}
+	else {
+		$rootUrl = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+	}
 	$cssDir = $rootUrl.'css/';
 	$imgDir = $rootUrl.'images/';
 	$rootDir = __DIR__.'/';
