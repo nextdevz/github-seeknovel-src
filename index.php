@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="<?php echo $cssDir;?>main.css">
     </head>
     <body class="day">
-        <div class="menu">
+        <div class="menu is-brown-bold">
             <div class="container">
                 <nav class="nav">
                 	<div class="nav-left">
@@ -62,17 +62,53 @@
             </div>
         </div>
         <div class="body container day">
-            <div>
-                <div class="list cover-random">
-                    <div class="display">
+            <div class="random">
+                <div class="cover-random">
+                    <div class="display tile">
                         <?php
-                            $num_random = 10;
-                            for($i=0; $i < $num_random; $i++) {
-                                echo '<figure class="image is-h150">
-                                    <img src="'.$imgDir.'/blank-cover.jpg">
-                                </figure>';
-                            }
+                            $num_random = 3;
+                            /*for($i=0; $i < $num_random; $i++) {
+                                if($i % 4 == 0) {
+                                    echo '<div class="tile is-parent">
+                                    <figure class="image">
+                                        <img src="'.$imgDir.'/blank-cover.jpg">
+                                    </figure>
+                                  </div>';
+                                }
+                                else if($i % 4 == 1) {
+                                    $class = ' is-one-quarter';
+                                }
+                                else {
+                                    $class = ' is-one-quarter';
+                                }
+                            }*/
                         ?>
+                            <div class="tile is-parent">
+                                <figure class="image is-2by1">
+                                    <img src="<?php echo $imgDir; ?>blank-cover-2by1.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="tile is-vertical is-6">
+                                <div class="tile">
+                                    <div class="tile is-parent">
+                                        <figure class="tile is-child image is-1by1">
+                                            <img src="<?php echo $imgDir; ?>blank-cover.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="tile is-parent is-vertical">
+                                        <article class="tile is-child">
+                                            <figure class="tile is-child image is-2by1">
+                                                <img src="<?php echo $imgDir; ?>blank-cover-2by1.jpg" alt="Image">
+                                            </figure>
+                                        </article>
+                                        <article class="tile is-child">
+                                            <figure class="tile is-child image is-2by1">
+                                                <img src="<?php echo $imgDir; ?>blank-cover-2by1.jpg" alt="Image">
+                                            </figure>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="list control-left">

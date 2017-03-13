@@ -6,6 +6,10 @@ html {
 	width: 100%;
 	top: 0px;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
+}
+.is-brown-bold {
+	background-image: -webkit-linear-gradient(51deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
+	background-image: -o-linear-gradient(51deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
 	background-image: linear-gradient(141deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
 }
 .menu, .nav {
@@ -378,7 +382,9 @@ p.nav-item {
     margin: 0.4rem 0;
 }
 .tab-body .label {
-    padding: 0px 10px;
+    padding: 4px 10px;
+	color: white;
+	border-radius: 4px;
 }
 .tab-body .label:not(:first-child) {
     margin-top: 1.5rem;
@@ -387,6 +393,15 @@ p.nav-item {
 	margin-bottom: 1.25rem;
 }
 /*------------------------------------------------------box---------------------------------------------------------------------------*/
+.random {
+	padding: 1rem 1rem 0rem 1rem;
+}
+.random .tile.is-parent {
+    padding: 2px;
+}
+.random .tile.is-vertical > .tile.is-child:not(:last-child) {
+    margin-bottom: 2px !important;
+}
 .list .box, .list figure {
 	flex-grow: 1;
 }
@@ -430,10 +445,8 @@ p.nav-item {
     height: 120px;
     width: 90px;
 }
-.list .image.is-h150 {
-    height: 190px;
-    /*width: 100%;*/
-	width: 33%;
+.image.is-2by1 {
+    width: 100%;
 }
 .list .image img {
 	border: 1px solid #bb9789;
@@ -445,20 +458,16 @@ p.nav-item {
 	top: 25px;
 	left: 0px;
 }
-.list.cover-random {
+/*.list.cover-random {
 	margin: 0.75rem 0.75rem 0rem 0.75rem;
 	flex-wrap: nowrap;
 	height: 193px;
 	overflow: hidden;
-	/*flex-wrap: wrap;
-	overflow: hidden;*/
 }
 .list.cover-random figure {
-	/*flex-basis: 50%;
-	flex-basis: 23%;*/
 	display: inline-block;
 	margin: 1px;
-}
+}*/
 .list.control-random span.dot{
 	background: rgba(107, 71, 57, 0.6) none repeat scroll 0 0;
 	border-radius: 30px;

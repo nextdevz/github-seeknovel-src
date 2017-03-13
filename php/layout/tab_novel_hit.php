@@ -4,14 +4,14 @@
     $qnv = new c_query();
     $qc->select('*', 'nv_category Order By Rand() limit 10');
     while($qc->next_record()) {
-        echo '<div class="label">'.$qc->v('category_name').'<hr></div>
+        echo '<div class="label is-brown-bold">'.$qc->v('category_name').'</div>
             <div class="list cover-card">';
             for($i=0; $i < 4; $i++) {
                 echo '<div class="box">
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-90x120">
-                                <img src="'.$imgDir.'/blank-cover.jpg" alt="Image">
+                                <img src="'.$imgDir.'blank-cover.jpg" alt="Image">
                             </figure>
                             <nav class="level">
                                 <a class="level-item">

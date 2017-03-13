@@ -7,7 +7,7 @@
         array('label'=>'นิยายมาใหม่', 'page'=>'new_novel.php')
     );
     for($r=0; $r < count($page); $r++) {
-        echo '<div class="label">'.$page[$r]['label'].'<hr></div>';
+        echo '<div class="label is-brown-bold">'.$page[$r]['label'].'</div>';
         if($r < 4) {
             echo '<div class="list cover-card">';
             for($i=0; $i < 8; $i++) {
@@ -15,7 +15,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-90x120">
-                                <img src="'.$imgDir.'/blank-cover.jpg" alt="Image">
+                                <img src="'.$imgDir.'blank-cover.jpg" alt="Image">
                             </figure>
                             <nav class="level">
                                 <a class="level-item">
@@ -66,7 +66,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-48x64">
-                                <img src="'.$imgDir.'/blank-cover.jpg" alt="Image">
+                                <img src="'.$imgDir.'blank-cover.jpg" alt="Image">
                             </figure>
                         </div>
                         <div class="media-content">

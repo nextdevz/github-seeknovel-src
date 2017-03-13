@@ -78,14 +78,14 @@ CREATE TABLE `nv_category` (
   `id_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `category_name` varchar(45) NOT NULL,
   PRIMARY KEY (`id_category`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `nv_category`
 --
 
 /*!40000 ALTER TABLE `nv_category` DISABLE KEYS */;
-INSERT INTO `nv_category` (`id_category`,`category_name`) VALUES 
+INSERT INTO `nv_category` (`id_category`,`category_name`) VALUES
  (1,'ฟรีสไตล์'),
  (2,'รัก, โรแมนติก'),
  (3,'ซึ้งกินใจ'),
