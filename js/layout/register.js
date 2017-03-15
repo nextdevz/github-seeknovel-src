@@ -87,6 +87,7 @@ $('#btn-regis').click(function() {
         showMsg('คำเตือน', error, 'is-warning', 320);
     }
 });
+
 if(user.hash != undefined) {
     $('.register').dataToObject(user);
 }

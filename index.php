@@ -146,6 +146,15 @@
                 <?php include_once($phpLayout.'tab_novel_guide.php');?>
             </div>
         </div>
+        <section id="newsletter" class="hero is-dark is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    รายละเอียด
+                </div>
+            </div>
+        </section>
+        <div class="popup">
+        </div>
         <div class="box-message is-hidden">
             <div class="box-message-v">
                 <article class="message is-info">
@@ -158,13 +167,6 @@
                 </article>
             </div>
         </div>
-        <section id="newsletter" class="hero is-dark is-bold">
-            <div class="hero-body">
-                <div class="container">
-                    รายละเอียด
-                </div>
-            </div>
-        </section>
         <script src="https://apis.google.com/js/client:platform.js?onload=startApp"></script>
         <script><?php include_once($jsDir.'javascript.php');?></script>
     </body>

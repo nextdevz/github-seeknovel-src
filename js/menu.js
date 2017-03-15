@@ -20,21 +20,25 @@ $("#btn-notifi").click(function(){
 
 $("#btn-sign-in").click(function(){
     //onOffBtn('.login', $('.register').hasClass('is-hidden'));
-    var obj = $('#menu-popup .menu-popup');
-    if(obj.hasClass('login') == false && obj.hasClass('register') == false) {
+    //var obj = $('#menu-popup .menu-popup');
+    //if(obj.hasClass('login') == false && obj.hasClass('register') == false) {
         if(layout.login =='') {
             $.get(url+'?layout=login', function(data){
-                $('#menu-popup').html(layout.login = data);
+                $('.popup').html(layout.login = data);
             });
         }
         else {
-            $('#menu-popup').html(layout.login);
+            $('.popup').html(layout.login);
         }
-    }
+    /*}
     else {
-        $('#menu-popup').html('');
-    }
+        $('.modal').html('');
+    }*/
 });
+
+function deletePopup() {
+    $('.popup').html('');
+}
 
 $('#nav-toggle').click(function(){
     onOffMenu('is-active', this, '#nav-toggle, #nav-menu');
@@ -43,7 +47,7 @@ $('#nav-toggle').click(function(){
 
 function hideSignin(data) {
     user = data;
-    $('#menu-popup').html('');
+    $('.popup').html('');
     $('#btn-sign-in').addClass('is-hidden');
     $('#btn-user, #btn-notifi, #btn-write, #btn-tags').removeClass('is-hidden');
 }

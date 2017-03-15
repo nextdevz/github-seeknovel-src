@@ -12,6 +12,9 @@ html {
 	background-image: -o-linear-gradient(51deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
 	background-image: linear-gradient(141deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
 }
+.is-brown-bold p{
+	color: white !important;
+}
 .menu, .nav {
 	height: 50px;
 	/*background: #6b4739 none repeat scroll 0 0;*/
@@ -40,15 +43,15 @@ body.day .body.container {
 	/*background-color: #f3f3f3;*/
 	background-color: #f2ede6;
 }
-body.day .text-line span {
-	background: #f3f3f3;
+body.day .modal-card section{
+	background-color: #f2ede6;
 }
-body.day .menu-popup .detail{
-	background-color: #f3f3f3;
+body.day .text-line span {
+	background: #f2ede6;
 }
 @media screen and (max-width: 768px) {
 	body.day .nav-menu.is-active {
-		background-color: #f3f3f3;
+		background-color: #f2ede6;
 	}
 }
 .body {
@@ -223,7 +226,34 @@ p.nav-item {
 .notifi.menu-popup .detail{
 	padding: 4px;
 }
-.login .detail, .register .detail{
+.modal-card.login, .modal-card.register {
+	width: 300px;
+}
+.modal-card .center {
+    text-align: center;
+}
+.modal-card header, .modal-card section, .modal-card footer{
+   	padding: 10px 16px 10px 16px;
+}
+.modal-card-title {
+	font-size: 1.3rem;
+}
+.modal-card .button{
+   	width: 100%;
+	margin-bottom: 0.75rem;
+}
+.modal-card a{
+   	color: #5b3729;
+}
+.modal-card a:hover{
+   	color: #9b7769;
+}
+.modal-card-body.foot {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #dbdbdb;
+}
+/*.login .detail, .register .detail{
 	padding: 20px 20px 10px 20px;
 	text-align: center;
 }
@@ -303,7 +333,7 @@ p.nav-item {
 	.div-show-tooltip .arrow-show.down{
 		top:7px;
 	}
-}
+}*/
 .control.has-icon .icon {
 	top: 1.1rem;
 }
@@ -312,17 +342,17 @@ p.nav-item {
 	text-align:center;
 	border-bottom: 1px solid #363e3e;
 	line-height:0.1em;
-	background:#fff;
 	margin:10px 0px 20px;
 }
 .text-line span {
 	padding: 0 10px;
+	background: transparent;
 }
 /*-------------------------------------------------------box-message---------------------------------------------------------------------*/
 .box-message {
 	position: fixed;
 	display: table;
-	z-index: 100;
+	z-index: 2000;
 	top: 0px;
 	left: 0px;
 	width: 100%;

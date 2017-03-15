@@ -28,12 +28,9 @@ $('#btn-login').click(function(){
 });
 
 $("#btn-register").click(function(){
-    //resetSelf();
-    //resetShare();
-    //$('#actype').val('self');
     user = {};
     $.get(url+'?layout=register&actype=self', function(data){
-        $('#menu-popup').html(data);
+        $('.popup').html(data);
     });
 });
 
@@ -50,7 +47,7 @@ function checkAccount(data){
     $.send(url+'?php=member', 'process=account&idcode='+data.idcode+'&actype='+data.actype, function(d){
         if(d == 0) {
             $.get(url+'?layout=register&actype='+data.actype, function(data){
-                $('#menu-popup').html(data);
+                $('.popup').html(data);
             });
         }
         else {

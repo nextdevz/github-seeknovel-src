@@ -12,7 +12,7 @@
             else {
                 $sql->pre_sel('*', 'nv_members', 'id_member=?', $sql->v('id_member'));
                 $fc = new c_function();
-                $result = login_data($sql->record(), $fc);
+                $result = login_data($sql->record(), $sql, $fc);
             }
             $sql->json($result);
         }
@@ -31,7 +31,7 @@
                 $result = 'unactivate';
             }
             else {
-                $result = login_data($sql->record(), $fc);
+                $result = login_data($sql->record(), $sql, $fc);
             }
         }
         else {
@@ -40,7 +40,7 @@
         $sql->json($result);
     }
 
-    function login_data($data, $fc) {
+    function login_data($data, $sql, $fc) {
         $exp = time() + CK_TIME;
         $token = array(
             'id_member' => $data['id_member'],
@@ -48,6 +48,8 @@
         );
         $token = $fc->token_set($token, 'Novel-Club-User');
         $gender = array('1'=>'male', '2'=>'female', '3'=>'other');
+        $data['last_login'] = time();
+        $sql->pre_upd('nv_members', 'last_login=:last_login', "id_member=:id_member", $data);
         setcookie('accessToken', $token, $exp);
         return array(
             'accessToken' => $token,
