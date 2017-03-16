@@ -62,6 +62,12 @@
             </div>
         </div>
         <div class="body container day">
+<?php
+    if(isset($_GET['php']) === true) {
+        include_once($phpProcess.$_GET['php'].'.php');
+    }
+    else {
+?>
             <div class="random">
                 <div class="cover-random">
                     <div class="display tile">
@@ -145,8 +151,11 @@
             <div class="tab-body">
                 <?php include_once($phpLayout.'tab_novel_guide.php');?>
             </div>
+<?php
+    }
+?>
         </div>
-        <section id="newsletter" class="hero is-dark is-bold">
+        <section class="footer hero is-dark is-bold">
             <div class="hero-body">
                 <div class="container">
                     รายละเอียด

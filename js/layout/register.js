@@ -29,6 +29,7 @@ $('.register input[id!="birthday"], button').focusin(function(){
 $('#btn-regis').click(function() {
     var error = '';
     var cng = 0;
+    var obj = $(this);
     $('.register input').each(function(i, v){
         var min = $(this).attr('minlength');
         var rx = $(this).attr('regexp');
@@ -57,16 +58,20 @@ $('#btn-regis').click(function() {
         error += '<span class="is-danger">เพศ</span> กรุณาระบุเพศของผู้เข้าใช้งาน<br/>' ;
     }
     if(error === '') {
+        obj.addClass('is-disabled');
         $.send(url+'?php=member' , $('.register').serializePHP('register'), function(data){
             var actype = $('#actype').val();
             if(data == 'susceed' || data['accessToken'] != undefined) {
-                $('.register').addClass('is-hidden');
+                $('.popup').html('');
                 if(actype == 'self') {
                     showMsg('ยืนยันการลงทะเบียน', 'ลงทะเบียนเรียบร้อยแล้วกรุณาตรวจสอบอีเมลเพื่อยืนยันการใช้งาน', 'is-success', 270);
                 }
                 else {
                     hideSignin(data);
                 }
+            }
+            else if(data == 'email error'){
+                showMsg('คำเตือน', 'พบข้อผิดพลาดไม่สามารถส่งลิงค์ลงทะเบียนไปยังอีเมลที่ลงทะเบียนไว้', 'is-warning');
             }
             else if(data == 'error'){
                 showMsg('คำเตือน', 'พบข้อผิดพลาดในข้อมูลที่ลงทะเบียน', 'is-warning');
@@ -80,7 +85,7 @@ $('#btn-regis').click(function() {
                 }
                 showMsg('รายละเอียด', str+'มีการลงทะเบียนเรียบร้อยแล้ว', 'is-info');
             }
-
+            obj.addClass('is-disabled');
         });
     }
     else {

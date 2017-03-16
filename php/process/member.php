@@ -26,7 +26,7 @@
         $sql = new c_query();
         $result = array();
         $sql->pre_sel('*', 'nv_members', 'member_name=? OR email_address=?', array($_POST['user'], $_POST['user']));
-        if($sql->num_rows() == 1 && $sql->v('passwd') == $fc->hash256($_POST['passwd'], 'Novel-Club-PWD')) {
+        if($sql->num_rows() == 1 && $sql->v('passwd') == $fc->hash256($_POST['passwd'], 'ND-Novel-PWD')) {
             if($sql->v('is_activated') == 0) {
                 $result = 'unactivate';
             }
@@ -83,15 +83,18 @@
             );
             if($_POST['actype'] == 'self') {
                 $data['member_name'] = $_POST['username'];
-                $data['passwd'] = $fc->hash256($_POST['password'], 'Novel-Club-PWD');
+                $data['passwd'] = $fc->hash256($_POST['password'], 'ND-Novel-PWD');
                 $sql->pre_sel('member_name, email_address', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
                 $num = $sql->num_rows();
                 if($num == 0) {
                     global $phpMail, $phpProcess;
-                    //$sql->pre_ins('nv_members', $sql->data2exec($data));
+                    $sql->pre_ins('nv_members', $sql->data2exec($data));
+                    $data['id_member'] = $sql->insert_id();
                     include_once($phpMail.'PHPMailerAutoload.php');
                     include_once($phpProcess.'mail.php');
-                    send_activate($data);
+                    if(!send_activate($data)) {
+                        $result = 'email error';
+                    }
                 }
                 else if($num > 1){
                     $result = 'duplicate name email';

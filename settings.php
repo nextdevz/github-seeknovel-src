@@ -20,12 +20,13 @@
 	//ini_set('display_errors', 0);
 	//set_error_handler("sqlErrorHandler");
 
-	if(isset($_SERVER['HTTP_REFERER'])) {
+	/*if(isset($_SERVER['HTTP_REFERER']) && $_SERVER['SERVER_NAME'] == parse_url($_SERVER['HTTP_REFERER'])['host']) {
 		$rootUrl = $_SERVER['HTTP_REFERER'];
 	}
 	else {
 		$rootUrl = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-	}
+	}*/
+	$rootUrl = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http")."://".$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']).'/';
 	$cssDir = $rootUrl.'css/';
 	$imgDir = $rootUrl.'images/';
 	$rootDir = __DIR__.'/';

@@ -16,7 +16,7 @@ html {
 	color: white !important;
 }
 .menu, .nav {
-	height: 50px;
+	height: 51px;
 	/*background: #6b4739 none repeat scroll 0 0;*/
 	z-index: 2;
 }
@@ -29,6 +29,15 @@ body.day {
 	background-position: left top, right top;
 	background-repeat: no-repeat;
 	background-size: 50% 100%;
+}
+.body.container {
+	min-height:calc(100vh - 127px);
+}
+.footer{
+	padding: 0px;
+}
+.footer .hero-body {
+    padding: 2rem 1rem;
 }
 @media screen and (max-width: 1191px) {
 	body.day {
@@ -48,6 +57,12 @@ body.day .modal-card section{
 }
 body.day .text-line span {
 	background: #f2ede6;
+}
+body.day a {
+	color: #8a8a8a;
+}
+body.day a:hover {
+	color: #4a4a4a;
 }
 @media screen and (max-width: 768px) {
 	body.day .nav-menu.is-active {
@@ -251,7 +266,6 @@ p.nav-item {
 .modal-card-body.foot {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    border-top: 1px solid #dbdbdb;
 }
 /*.login .detail, .register .detail{
 	padding: 20px 20px 10px 20px;
