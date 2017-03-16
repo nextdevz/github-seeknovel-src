@@ -40,7 +40,7 @@
         $sql->json($result);
     }
 
-    function login_data($data, $sql, $fc) {
+    function login_data($data, $sql, $fc, $login=true) {
         $exp = time() + CK_TIME;
         $token = array(
             'id_member' => $data['id_member'],
@@ -48,8 +48,10 @@
         );
         $token = $fc->token_set($token, 'Novel-Club-User');
         $gender = array('1'=>'male', '2'=>'female', '3'=>'other');
-        $data['last_login'] = time();
-        $sql->pre_upd('nv_members', 'last_login=:last_login', "id_member=:id_member", $data);
+        if($login === true) {
+            $data['last_login'] = time();
+            $sql->pre_upd('nv_members', 'last_login=?', "id_member=?", array($data['last_login'], $data['id_member']));
+        }
         setcookie('accessToken', $token, $exp);
         return array(
             'accessToken' => $token,
@@ -85,7 +87,11 @@
                 $sql->pre_sel('member_name, email_address', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
                 $num = $sql->num_rows();
                 if($num == 0) {
-                    $sql->pre_ins('nv_members', $sql->data2exec($data));
+                    global $phpMail, $phpProcess;
+                    //$sql->pre_ins('nv_members', $sql->data2exec($data));
+                    include_once($phpMail.'PHPMailerAutoload.php');
+                    include_once($phpProcess.'mail.php');
+                    send_activate($data);
                 }
                 else if($num > 1){
                     $result = 'duplicate name email';
@@ -108,6 +114,7 @@
                         $sql->pre_sel('id_member', 'nv_members', 'email_address=?', $_POST['email']);
                         if($sql->num_rows() == 0) {
                             $data['is_activated'] = '1';
+                            $data['last_login'] = time();
                             $sql->pre_ins('nv_members', $sql->data2exec($data));
                             $account['id_member'] = $sql->insert_id();
                             $account['id_account'] = $_POST['idcode'];
@@ -116,7 +123,7 @@
                             $data['id_member'] = $account['id_member'];
                             $data['introduce'] = '';
                             $data['silver_coin'] = $data['gold_coin'] = 0;
-                            $result = login_data($data, $fc);
+                            $result = login_data($data, $sql, $fc, false);
                         }
                         else {
                             $result = 'duplicate email';

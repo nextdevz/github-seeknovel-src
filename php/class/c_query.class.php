@@ -185,7 +185,7 @@
 		private function skip_data($skip) {
 			//$skip = str_replace(" ", "", $skip.($skip != '' ? ', ' : '').'real_string_check, process, percentProcess, pathProcess');
 			//return $this->main->array_trim(array_flip(explode(',', $skip)));
-			return array_flip(explode(',', $skip));
+			return array_flip(array_map('trim', explode(',', $skip)));
 		}
 
 //-------------------------------------------------------------------------------------------------------
@@ -420,11 +420,11 @@
 //-------------------------------------------------------------------------------------------------------
 
 		public function pre_upd($table,$value,$where,$data=null) {
-			if($this->data_exec($where)) {
-				$this->qid = @$this->pdo->prepare($this->sql_update($table,$where['update'],$value));
-				return $this->process($this->qid->execute($where['data']));
+			if($this->data_exec($value)) {
+				$this->qid = @$this->pdo->prepare($this->sql_update($table,$value['update'],$where));
+				return $this->process($this->qid->execute($value['data']));
 			}
-			else return $this->prepare($this->sql_update($table,$value,$where),$data);
+			else $this->prepare($this->sql_update($table,$value,$where),$data);
 		}
 
 //-------------------------------------------------------------------------------------------------------

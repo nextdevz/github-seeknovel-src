@@ -4,7 +4,7 @@
 	//$root = 'http://'.$webName;
 	$root = '';
 	$title = 'Kuma Baka';
-	$subtitle = ' เว็บไซต์สำหรับคนรักนิยาย';
+	$subtitle = 'เว็บไซต์สำหรับคนรักนิยาย';
 	$fulltitle = $title.' '.$subtitle;
 	$global_vars = array (
 		"DB_HOST"	=>	"localhost",
@@ -36,4 +36,12 @@
 	$phpClass = $phpDir.'class/';
 	$phpLayout = $phpDir.'layout/';
 	$phpProcess = $phpDir.'process/';
+	$phpMail = $phpDir.'PHPMailer/';
+
+	$smtpFrom = 't_k_chai@hotmail.com';
+	$smtpHost = 'ssl://smtp.gmail.com';
+	$smtpPort = 465;
+    $smtpAuth = true;
+    $smtpUser = 'nextdev.z@gmail.com';
+    $smtpPass = 'TKChai4579';
 ?>
