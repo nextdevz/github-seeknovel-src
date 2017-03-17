@@ -119,9 +119,6 @@ body.day a:hover {
 .menu select{
 	height: 28px;
 }
-#birthday-s {
-	height: 30px;
-}
 .nav-center span {
     margin-top: 5px;
 }
@@ -268,10 +265,15 @@ p.nav-item {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-/*.login .detail, .register .detail{
-	padding: 20px 20px 10px 20px;
-	text-align: center;
+#birthday-s {
+	height: 32px;
 }
+.modal-card .control .select, .modal-card select{
+   	width: 100%;
+}
+
+
+
 .menu-popup {
 	position: absolute;
 	top: 50px;
@@ -348,7 +350,10 @@ p.nav-item {
 	.div-show-tooltip .arrow-show.down{
 		top:7px;
 	}
-}*/
+}
+
+
+
 .control.has-icon .icon {
 	top: 1.1rem;
 }

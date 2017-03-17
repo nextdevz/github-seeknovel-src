@@ -13,7 +13,7 @@ var url='<?php echo $rootUrl;?>process.php';
     if(isset($_COOKIE['accessToken'])) {
         include_once($phpClass.'c_function.class.php');
         $fc = new c_function();
-        $token = $fc->token_get($_COOKIE['accessToken'], 'Novel-Club-User');
+        $token = $fc->token_get($_COOKIE['accessToken'], 'ND-Novel-ACTK');
         if($token['verify'] == 1 && $token['data']['exp'] > time()) {
             echo "hideSignin({});";
         }

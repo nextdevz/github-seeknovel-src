@@ -46,7 +46,7 @@
             'id_member' => $data['id_member'],
             'exp' => $exp
         );
-        $token = $fc->token_set($token, 'Novel-Club-User');
+        $token = $fc->token_set($token, 'ND-Novel-ACTK');
         $gender = array('1'=>'male', '2'=>'female', '3'=>'other');
         if($login === true) {
             $data['last_login'] = time();
@@ -60,8 +60,9 @@
             'email_address' => $data['email_address'],
             'birthdate' => $data['birthdate'],
             'gender' => $gender[$data['gender']],
-            'silver_coin' => $data['silver_coin'],
-            'gold_coin' => $data['gold_coin'],
+            'white_paw' => $data['white_paw'],
+            'black_paw' => $data['black_paw'],
+            'gold_paw' => $data['gold_paw'],
         );
     }
 
@@ -70,7 +71,7 @@
         $sql = new c_query();
         $result = 'susceed';
         $date = explode('/', $_POST['birthday']);
-        if(checkdate($date['1'], $date['0'], $date['2']) === true && preg_match('/^[A-Za-z0-9-]{3,20}$/', $_POST['username']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && preg_match('/^[1-3]{1}$/', $_POST['gender'])) {
+        if(checkdate($date['1'], $date['0'], $date['2']) === true && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && preg_match('/^[1-3]{1}$/', $_POST['gender'])) {
             $ip = $fc->get_real_ip(true);
             $data = array(
                 'real_name' => $_POST['realname'],
@@ -82,31 +83,36 @@
                 'member_ip2' => $ip['1']
             );
             if($_POST['actype'] == 'self') {
-                $data['member_name'] = $_POST['username'];
-                $data['passwd'] = $fc->hash256(trim($_POST['password']), 'ND-Novel-PWD');
-                $sql->pre_sel('member_name, email_address', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
-                $num = $sql->num_rows();
-                if($num == 0) {
-                    global $phpMail, $phpProcess;
-                    $sql->pre_ins('nv_members', $sql->data2exec($data));
-                    $data['id_member'] = $sql->insert_id();
-                    include_once($phpMail.'PHPMailerAutoload.php');
-                    include_once($phpProcess.'mail.php');
-                    if(!send_activate($data)) {
-                        $result = 'email error';
+                if(preg_match('/^[A-Za-z0-9-]{3,20}$/', $_POST['username'])) {
+                    $data['member_name'] = $_POST['username'];
+                    $data['passwd'] = $fc->hash256(trim($_POST['password']), 'ND-Novel-PWD');
+                    $sql->pre_sel('member_name, email_address', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
+                    $num = $sql->num_rows();
+                    if($num == 0) {
+                        global $phpMail, $phpProcess;
+                        $sql->pre_ins('nv_members', $sql->data2exec($data));
+                        $data['id_member'] = $sql->insert_id();
+                        include_once($phpMail.'PHPMailerAutoload.php');
+                        include_once($phpProcess.'mail.php');
+                        if(!send_activate($data)) {
+                            $result = 'email error';
+                        }
                     }
-                }
-                else if($num > 1){
-                    $result = 'duplicate name email';
+                    else if($num > 1){
+                        $result = 'duplicate name email';
+                    }
+                    else {
+                        $result = 'duplicate';
+                        if(strtolower($sql->v('member_name')) == strtolower($_POST['username'])) {
+                            $result .= ' name';
+                        }
+                        if(strtolower($sql->v('email_address')) == strtolower($_POST['email'])) {
+                            $result .= ' email';
+                        }
+                    }
                 }
                 else {
-                    $result = 'duplicate';
-                    if(strtolower($sql->v('member_name')) == strtolower($_POST['username'])) {
-                        $result .= ' name';
-                    }
-                    if(strtolower($sql->v('email_address')) == strtolower($_POST['email'])) {
-                        $result .= ' email';
-                    }
+                    $result = 'error';
                 }
             }
             else {
@@ -125,7 +131,7 @@
                             $sql->pre_ins('nv_account_'.$_POST['actype'], $sql->data2exec($account));
                             $data['id_member'] = $account['id_member'];
                             $data['introduce'] = '';
-                            $data['silver_coin'] = $data['gold_coin'] = 0;
+                            $data['white_paw'] = $data['black_paw'] = $data['gold_paw'] = 0;
                             $result = login_data($data, $sql, $fc, false);
                         }
                         else {
