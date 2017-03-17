@@ -31,6 +31,7 @@ body.day {
 	background-size: 50% 100%;
 }
 .body.container {
+	color: #4a4a4a;
 	min-height:calc(100vh - 127px);
 }
 .footer{
@@ -242,7 +243,7 @@ p.nav-item {
 	padding: 4px;
 }
 .modal-card.login, .modal-card.register {
-	width: 300px;
+	width: 310px;
 }
 .modal-card .center {
     text-align: center;
@@ -361,6 +362,16 @@ p.nav-item {
 .text-line span {
 	padding: 0 10px;
 	background: transparent;
+}
+p.is-small {
+	font-size: 0.75rem;
+}
+.activate .message  {
+	display: inline-block;
+	text-align: left;
+	margin-top: calc(50vh - 147px);
+	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
+	border: 1px solid #969e9e;
 }
 /*-------------------------------------------------------box-message---------------------------------------------------------------------*/
 .box-message {

@@ -26,7 +26,7 @@
         $sql = new c_query();
         $result = array();
         $sql->pre_sel('*', 'nv_members', 'member_name=? OR email_address=?', array($_POST['user'], $_POST['user']));
-        if($sql->num_rows() == 1 && $sql->v('passwd') == $fc->hash256($_POST['passwd'], 'ND-Novel-PWD')) {
+        if($sql->num_rows() == 1 && $sql->v('passwd') == $fc->hash256(trim($_POST['passwd']), 'ND-Novel-PWD')) {
             if($sql->v('is_activated') == 0) {
                 $result = 'unactivate';
             }
@@ -70,7 +70,7 @@
         $sql = new c_query();
         $result = 'susceed';
         $date = explode('/', $_POST['birthday']);
-        if(checkdate($date['1'], $date['0'], $date['2']) === true && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && preg_match('/^[1-3]{1}$/', $_POST['gender'])) {
+        if(checkdate($date['1'], $date['0'], $date['2']) === true && preg_match('/^[A-Za-z0-9-]{3,20}$/', $_POST['username']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && preg_match('/^[1-3]{1}$/', $_POST['gender'])) {
             $ip = $fc->get_real_ip(true);
             $data = array(
                 'real_name' => $_POST['realname'],
@@ -83,7 +83,7 @@
             );
             if($_POST['actype'] == 'self') {
                 $data['member_name'] = $_POST['username'];
-                $data['passwd'] = $fc->hash256($_POST['password'], 'ND-Novel-PWD');
+                $data['passwd'] = $fc->hash256(trim($_POST['password']), 'ND-Novel-PWD');
                 $sql->pre_sel('member_name, email_address', 'nv_members', 'member_name=? || email_address=?', array($_POST['username'], $_POST['email']));
                 $num = $sql->num_rows();
                 if($num == 0) {
@@ -101,10 +101,10 @@
                 }
                 else {
                     $result = 'duplicate';
-                    if($sql->v('member_name') == $_POST['username']) {
+                    if(strtolower($sql->v('member_name')) == strtolower($_POST['username'])) {
                         $result .= ' name';
                     }
-                    if($sql->v('email_address') == $_POST['email']) {
+                    if(strtolower($sql->v('email_address')) == strtolower($_POST['email'])) {
                         $result .= ' email';
                     }
                 }

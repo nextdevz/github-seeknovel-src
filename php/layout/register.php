@@ -113,6 +113,9 @@
                     อื่นๆ
                 </label>
             </p>
+            <p class="control is-small">
+                การสมัครสมาชิกหมายถึงคุณยอมรับ <strong><a>ข้อตกลงการให้บริการ</a></strong>
+            </p>
             <p class="control">
                 <button id="btn-regis" class="button is-dark">สมัครสมาชิก</button>
             </p>

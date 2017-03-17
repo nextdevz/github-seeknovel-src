@@ -64,7 +64,7 @@
         <div class="body container day">
 <?php
     if(isset($_GET['php']) === true) {
-        include_once($phpProcess.$_GET['php'].'.php');
+        include_once($phpLayout.$_GET['php'].'.php');
     }
     else {
 ?>
