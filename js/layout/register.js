@@ -85,7 +85,7 @@ $('#btn-regis').click(function() {
                 }
                 showMsg('รายละเอียด', str+'มีการลงทะเบียนเรียบร้อยแล้ว', 'is-info');
             }
-            obj.addClass('is-disabled');
+            obj.removeClass('is-disabled');
         });
     }
     else {
