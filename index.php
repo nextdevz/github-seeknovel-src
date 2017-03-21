@@ -1,12 +1,15 @@
 <?php
     include_once(__DIR__.'/settings.php');
+    include_once($phpClass.'c_function.class.php');
+    include_once($phpClass.'c_query.class.php');
 
 	if(isset($_COOKIE['accessToken'])) {
-        include_once($phpClass.'c_function.class.php');
         $fc = new c_function();
         $token = $fc->token_get($_COOKIE['accessToken'], 'ND-Novel-ACTK');
         if($token['verify'] == 1 && $token['data']['exp'] > time()) {
-            echo "hideSignin({});";
+            $sql = new c_query();
+            $sql->pre_sel('*', 'nv_members', 'id_member=?', $token['data']['id_member']);
+            $user = $sql->record();
         }
     }
 ?>
@@ -100,7 +103,10 @@
                                 }
                             }*/
                         ?>
-                            <div class="tile is-parent">
+                        <figure class="image is-2by1">
+                            <img src="<?php echo $imgDir; ?>blank-cover-2by1.jpg" alt="Image">
+                        </figure>
+                            <!--<div class="tile is-parent">
                                 <figure class="image is-2by1">
                                     <img src="<?php echo $imgDir; ?>blank-cover-2by1.jpg" alt="Image">
                                 </figure>
@@ -125,7 +131,7 @@
                                         </article>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                     </div>
                 </div>
                 <div class="list control-left">

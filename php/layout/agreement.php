@@ -157,7 +157,7 @@
         </section>
         <footer class="modal-card-foot">
                     <div id="data"></div>
-            <a id="accept" class="button is-brown-bold is-disabled">ยอมรับข้อตกลงและเงื่อนไขการใช้งาน</a>
+            <a id="accept" class="button is-brown-bold">ยอมรับข้อตกลงและเงื่อนไขการใช้งาน</a>
         </footer>
     </div>
 </div>

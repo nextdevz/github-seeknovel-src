@@ -1,14 +1,12 @@
 <?php
     $page = array(
-        array('label'=>'อัปเดทล่าสุด', 'page'=>''),
-        array('label'=>'ท็อปนิยายแต่ง', 'page'=>''),
-        array('label'=>'ท็อปนิยายแปล', 'page'=>''),
-        array('label'=>'ท็อปนิยายแต่ละหมวด', 'page'=>''),
-        array('label'=>'นิยายมาใหม่', 'page'=>'new_novel.php')
+        array('label'=>'นิยายแปลยอดนิยม', 'page'=>''),
+        array('label'=>'นิยายแต่งยอดนิยม', 'page'=>''),
+        array('label'=>'อัปเดทตอนล่าสุด', 'page'=>'new_novel.php')
     );
     for($r=0; $r < count($page); $r++) {
         echo '<div class="label is-brown-bold">'.$page[$r]['label'].'</div>';
-        if($r < 4) {
+        if($r < 2) {
             echo '<div class="list cover-card">';
             for($i=0; $i < 8; $i++) {
                 echo '<div class="box">
