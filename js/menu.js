@@ -19,21 +19,18 @@ $("#btn-notifi").click(function(){
 });
 
 $("#btn-sign-in").click(function(){
-    //onOffBtn('.login', $('.register').hasClass('is-hidden'));
-    //var obj = $('#menu-popup .menu-popup');
-    //if(obj.hasClass('login') == false && obj.hasClass('register') == false) {
-        if(layout.login =='') {
-            $.get(url+'?layout=login', function(data){
-                $('.popup').html(layout.login = data);
-            });
-        }
-        else {
-            $('.popup').html(layout.login);
-        }
-    /*}
+    if(layout.login =='') {
+        $.get(url+'?layout=login', function(data){
+            $('.popup').html(layout.login = data);
+        });
+    }
     else {
-        $('.modal').html('');
-    }*/
+        $('.popup').html(layout.login);
+    }
+});
+
+$("#btn-user").click(function(){
+    onOffMenu('is-hidden', '.menu-popup');
 });
 
 function deletePopup() {
@@ -62,12 +59,6 @@ function onOffMenu(pClass, obj, select) {
     }
 }
 
-/*$.get(url+'?layout=login', function(data){
-    layout.login = data;
-});
-$.get(url+'?layout=register&actype=self', function(data){
-    $('#menu-popup').html(data);
-});*/
 /*function onOffBtn(pClass, val) {
     $('#nav-toggle, #nav-menu').removeClass('is-active');
     if($(pClass).hasClass('is-hidden') === true && val === true) {

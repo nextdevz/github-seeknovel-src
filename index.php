@@ -58,11 +58,7 @@
                         <span></span>
                     </span>
                     <div id="menu-popup">
-                        <?php
-                            echo showIcon('list', 'category', 'หมวดนิยาย', '', 'is-hidden-mobile')
-                            .showIcon('pencil', 'write', 'เขียนนิยาย', 'is-hidden', 'is-hidden-mobile')
-                            .showIcon('tags', 'tags', 'ที่คั่นนิยาย', 'is-hidden', 'is-hidden-mobile');
-                        ?>
+                        <?php include_once($phpLayout.'user.php');?>
                     </div>
                 </nav>
             </div>

@@ -12,6 +12,12 @@ html {
 	background-image: -o-linear-gradient(51deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
 	background-image: linear-gradient(141deg, #5b3729 0%, #6b4739 71%, #8b6759 100%);
 }
+.is-brown-bold.button {
+	color: #ccc;
+}
+.is-brown-bold.button:hover {
+	color: white;
+}
 .is-brown-bold p{
 	color: white !important;
 }
@@ -242,6 +248,9 @@ p.nav-item {
 .modal-card.login, .modal-card.register {
 	width: 310px;
 }
+.modal-card.agreement {
+	width: 80%;
+}
 .modal-card .center {
     text-align: center;
 }
@@ -251,9 +260,12 @@ p.nav-item {
 .modal-card-title {
 	font-size: 1.3rem;
 }
-.modal-card .button{
+.modal-card-body .button{
    	width: 100%;
 	margin-bottom: 0.75rem;
+}
+.modal-card-foot{
+   justify-content: center;
 }
 .modal-card a{
    	color: #5b3729;
@@ -273,7 +285,10 @@ p.nav-item {
 }
 
 
-
+.menu-popup .user{
+	padding: 20px 20px 10px 20px;
+	text-align: center;
+}
 .menu-popup {
 	position: absolute;
 	top: 50px;
@@ -281,9 +296,6 @@ p.nav-item {
 	color: #363e3e;
 	z-index: 90;
 	box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
-}
-.menu-popup div.self, .menu-popup div.other {
-	margin-bottom: 0.75rem;
 }
 @media screen and (min-width: 769px) {
 	.menu-popup .detail{
@@ -307,12 +319,6 @@ p.nav-item {
 .menu-popup .button{
    	width: 100%;
 	margin-bottom: 0.75rem;
-}
-.menu-popup a{
-   	color:#363e3e;
-}
-.menu-popup a:hover{
-   	color:#707b7b;
 }
 @media screen and (min-width: 769px) {
 	.menu-popup .arrow-box{

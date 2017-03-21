@@ -28,8 +28,8 @@ $('#btn-login').click(function(){
 });
 
 $("#btn-register").click(function(){
-    user = {};
-    $.get(url+'?layout=register&actype=self', function(data){
+    user = {actype:'self'};
+    $.get(url+'?layout=agreement', function(data){
         $('.popup').html(data);
     });
 });
@@ -46,7 +46,7 @@ function checkAccount(data){
     user = data;
     $.send(url+'?php=member', 'process=account&idcode='+data.idcode+'&actype='+data.actype, function(d){
         if(d == 0) {
-            $.get(url+'?layout=register&actype='+data.actype, function(data){
+            $.get(url+'?layout=agreement', function(data){
                 $('.popup').html(data);
             });
         }
