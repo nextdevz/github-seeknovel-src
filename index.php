@@ -1,5 +1,14 @@
 <?php
     include_once(__DIR__.'/settings.php');
+
+	if(isset($_COOKIE['accessToken'])) {
+        include_once($phpClass.'c_function.class.php');
+        $fc = new c_function();
+        $token = $fc->token_get($_COOKIE['accessToken'], 'ND-Novel-ACTK');
+        if($token['verify'] == 1 && $token['data']['exp'] > time()) {
+            echo "hideSignin({});";
+        }
+    }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="th" lang="th">
