@@ -156,7 +156,7 @@
                         $tab = array(
                             array('label'=>'นิยายแนะนำ', 'page'=>'tab_novel_guide'),
                             array('label'=>'นิยายยอดนิยม', 'page'=>'tab_novel_hit'),
-                            array('label'=>'นิยายอัพเดท', 'page'=>'')
+                            array('label'=>'นิยายอัพเดท', 'page'=>'tab_novel_update')
                         );
                         echo '<li id="'.$tab[0]['page'].'" class="is-active"><a>'.$tab[0]['label'].'</a></li>';
                         for($i=1; $i<count($tab); $i++) {

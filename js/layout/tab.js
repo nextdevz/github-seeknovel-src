@@ -1,9 +1,20 @@
 $('.tabs li').click(function(){
     $('.tabs li').removeClass('is-active');
-    $(this).addClass('is-active');
-    $.get(url+'?layout='+$(this).attr('id'), function(data){
-        $('.tab-body').html(data);
+    var obj = $(this);
+    obj.addClass('is-active');
+    $.get(url+'?layout='+obj.attr('id'), function(data){
+        $('.tab-body').animate({
+            opacity: 1,
+        }, {
+            duration:500,
+            start:function() {
+                $('.tab-body').html(data);
+            }
+        });
     });
+    $('.tab-body').animate({
+        opacity: 0,
+    }, 500);
 });
 
 $(window).scroll(function(event) {
